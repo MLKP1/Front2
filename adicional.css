@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ff6f3c;
+  }
+  
+  .app {
+    max-width: 400px;
+    margin: auto;
+    background: #f4f7fa;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .top-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  .back-btn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .search-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-bar button {
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: #ddd;
+    border: none;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  
+  .tab {
+    padding: 0.5rem;
+    background: #e0e0e0;
+    border: none
+  
