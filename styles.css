@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff5f0;
+  }
+  
+  .container {
+    max-width: 360px;
+    margin: 0 auto;
+    background: white;
+    padding: 1rem;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 50px;
+  }
+  
+  .status {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .status-indicator.aberto {
+    background-color: green;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    margin-right: 4px;
+  }
+  
+  .carrinho-icon {
+    font-size: 1.5rem;
+  }
+  
+  .main {
+    text-align: center;
+  }
+  
+  .highlight {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .descricao {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+  
+  .btn-pizza {
+    background-image: url('pizza-button-bg.jpg');
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+    cursor: pointer;
+  }
+  
+  .instagram-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #d8d8d8;
+    margin: 1rem 0;
+  }
+  
+  .localizacao {
+    text-align: left;
+    margin: 1rem 0;
+  }
+  
+  .status-pronto {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .status-pronto .pronto {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
