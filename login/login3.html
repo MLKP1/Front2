@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endereço</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ff5722;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1d1b25;
+      border-radius: 10px;
+      width: 350px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .form-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      margin-top: 10px;
+    }
+
+    .back-button {
+      background-color: #ff5722;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+    }
+
+    h2 {
+      color: #fff;
+      text-align: center;
+    }
+
+    p.sub {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="back-button">&#8592;</button>
+    <h2>Endereço</h2>
+    <p class="sub">Por favor adicione um endereço</p>
+
+    <div class="form-box">
+      <form>
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" placeholder="Avenida Paulista">
+
+        <div class="input-row">
+          <div>
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" placeholder="11.923-088">
+          </div>
+          <div>
+            <label for="numero">Nº</label>
+            <input type="number" id="numero" placeholder="123">
+          </div>
+        </div>
+
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" placeholder="Parque Flamingo">
+
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" placeholder="São Paulo">
+
+        <label for="complemento">Complemento</label>
+        <input type="text" id="complemento" placeholder="Bloco Apto etc.">
+
+        <button type="submit">Concluir</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

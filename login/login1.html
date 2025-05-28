@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ff5722;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1d1b25;
+      border-radius: 10px;
+      width: 350px;
+      padding: 20px;
+    }
+
+    .form-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      color: #fff;
+      text-align: center;
+    }
+
+    p.sub {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .senha-area {
+      position: relative;
+    }
+
+    .senha-area input {
+      padding-right: 35px;
+    }
+
+    .senha-area .eye {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .remember-forgot label {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-forgot a {
+      color: #ff5722;
+      text-decoration: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .register {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .register span {
+      color: #ff5722;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-login img {
+      width: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Entrar</h2>
+    <p class="sub">Por favor entre com sua conta existente</p>
+
+    <div class="form-box">
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="lucas@gmail.com">
+
+        <label for="password">Senha</label>
+        <div class="senha-area">
+          <input type="password" id="password" placeholder="••••••••">
+          <span class="eye">👁️</span>
+        </div>
+
+        <div class="remember-forgot">
+          <label><input type="checkbox"> Lembrar-me</label>
+          <a href="#">Esqueci a senha</a>
+        </div>
+
+        <button type="submit">Entrar</button>
+      </form>
+
+      <div class="register">
+        Não tem conta? <span>REGISTRE-SE</span>
+      </div>
+
+      <div class="social-login">
+        <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Apple">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
