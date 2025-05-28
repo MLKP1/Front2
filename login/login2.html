@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ff5722;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1d1b25;
+      border-radius: 10px;
+      width: 350px;
+      padding: 20px;
+    }
+
+    .form-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      margin-top: 10px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .back-button {
+      background-color: #ff5722;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      position: absolute;
+      left: 25px;
+    }
+
+    h2 {
+      color: #fff;
+      text-align: center;
+    }
+
+    p.sub {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .senha-area {
+      position: relative;
+    }
+
+    .senha-area input {
+      padding-right: 35px;
+    }
+
+    .senha-area .eye {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="back-button">&#8592;</button>
+    <h2>Registre-se</h2>
+    <p class="sub">Por favor registre-se para continuar</p>
+
+    <div class="form-box">
+      <form>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Seu nome">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="seu@email.com">
+
+        <label for="whatsapp">Whatsapp</label>
+        <input type="tel" id="whatsapp" placeholder="(xx) xxxxx-xxxx">
+
+        <label for="senha">Senha</label>
+        <div class="senha-area">
+          <input type="password" id="senha" placeholder="••••••••">
+          <span class="eye">👁️</span>
+        </div>
+
+        <label for="confirmar-senha">Confirmar senha</label>
+        <div class="senha-area">
+          <input type="password" id="confirmar-senha" placeholder="••••••••">
+          <span class="eye">👁️</span>
+        </div>
+
+        <button type="submit">Continuar</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
