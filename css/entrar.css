@@ -1,0 +1,153 @@
+body, main {
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--cinza-escuro);
+  color: var(--branco);
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  margin: 4rem 0 1rem 0;
+}
+
+.sub {
+  margin-bottom: 3rem;
+}
+
+.container {
+  background-color: var(--branco);
+  color: var(--cinza);
+  border-radius: 20px 20px 0 0;
+  padding: 2rem;
+  flex: 1;
+}
+
+.container form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.email, .senha {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.senha .senha-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.senha .senha-area .olho {
+  position: absolute;
+  right: 2px;
+  padding: 6px;
+  border: none;
+  background: none;
+  color: var(--cinza);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 50ms, color 0.2s ease;
+  opacity: 1;
+}
+
+.senha .senha-area .olho:focus {
+  color: var(--cinza-escuro);
+  outline: none;
+}
+
+.senha .senha-area .olho:hover {
+  color: var(--laranja);
+}
+
+.senha .senha-area .olho.trocando {
+  opacity: 0;
+}
+
+#email,
+#senha {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: var(--branco-escuro);
+  color: var(--cinza-escuro);
+  transition: border-color 0.2s ease;
+}
+
+#email:focus,
+#senha:focus {
+  border-color: var(--laranja);
+  outline: none;
+}
+
+#email:not(:focus):not(:placeholder-shown):invalid,
+#senha:not(:focus):not(:placeholder-shown):invalid {
+  border: 2px solid var(--perigo);
+}
+
+#email:not(:focus):not(:placeholder-shown):valid,
+#senha:not(:focus):not(:placeholder-shown):valid {
+  border: 2px solid var(--sucesso);
+}
+
+#senha {
+  padding-right: 2rem;
+}
+
+label {
+  font-weight: 600;
+  color: var(--cinza-escuro);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--laranja);
+  color: var(--branco);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--laranja-claro);
+}
+
+button[type="submit"]:focus {
+  outline: none;
+  background-color: var(--laranja-claro);
+}
+
+.registrar a, .esqueci-senha a {
+  color: var(--laranja);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.registrar a:focus, .esqueci-senha a:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.registrar {
+  margin-bottom: 5px;
+}
