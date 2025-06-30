@@ -38,7 +38,7 @@ async function entrar(e) {
     })
 
     localStorage.setItem('token', response.data.token)
-    window.location.href = '/'
+    window.location.href = '/Front2'
   } catch (error) {
     console.error('Erro:', error)
     alert('Ocorreu um erro ao tentar entrar. Tente novamente.')
