@@ -5,17 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comanda Online</title>
   <link rel="stylesheet" href="styles.css">
-</head>
+  </head>
 <body>
   <div class="container">
     <header class="header">
-      <img src="e:\3i3\TCC pika das galaxia\teste de front\imagens\pizzeria-vintage-vector-logo-white-260nw-2461273959 (1).webp" alt="Logo Comanda" class="logo">
+      <img src="assets/images/logo.webp" alt="Logo Comanda" class="logo">
       <div class="status">
         <span class="status-indicator aberto">Aberto</span>
         <span class="horario"> - Até 23:30</span>
       </div>
-      <img src="" alt="carrinho" class="carrinho">
-    </header>
+      <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="login/">Cadastrar</a></li>
+          <li><a href="login/">Entrar</a></li>
+          <li><a href="#">Carrinho</a></li>
+          <li><a href="pedido.html">Pedidos</a></li>
+        </ul>
+      </nav>
+      </header>
 
     <main class="main">
       <h2>Bem-vindo à <span class="highlight">Comanda</span> Online</h2>
@@ -37,5 +49,5 @@
       </div>
     </main>
   </div>
-</body>
+  <script src="script.js"></script> </body>
 </html>
