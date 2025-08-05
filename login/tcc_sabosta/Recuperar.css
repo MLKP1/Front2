@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-orange: #FF6B00;
+    --dark-bg: #333333;
+    --light-grey-bg: #F5F5F5;
+    --dark-grey-text: #333333;
+    --medium-grey-text: #666666;
+    --input-border: #E0E0E0;
+    --error-red: #DC3545;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.screen-container {
+    background-color: var(--dark-bg);
+    width: 100%;
+    max-width: 375px;
+    height: 812px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+/* Header styles */
+.header {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 30px 25px 25px;
+    text-align: center;
+    position: relative;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.back-arrow-circle {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-orange);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Main Content Area (White background) */
+.content-area {
+    background-color: var(--white);
+    flex-grow: 1;
+    padding: 30px 25px 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    position: relative;
+    margin-top: -25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--medium-grey-text);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"],
+.input-group input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: var(--light-grey-bg);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--dark-grey-text);
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: var(--medium-grey-text);
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 0 2px var(--primary-orange);
+}
+
+.input-error {
+    border: 1px solid var(--error-red) !important;
+}
+
+.error-message {
+    color: var(--error-red);
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.password-group {
+    /* No extra margin-bottom needed here as input-group has it */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: calc(50% + 5px);
+    transform: translateY(-50%);
+    color: var(--medium-grey-text);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Buttons */
+.primary-button {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space above the button */
+}
+
+.primary-button:hover {
+    background-color: #e65c00;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Specific styles for Address screen (retained for cumulative CSS) */
+.split-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.split-inputs .input-half {
+    flex: 1;
+}
+
+/* No footer-login or social-login specific styles for this screen */
