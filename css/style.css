@@ -1,0 +1,30 @@
+:root {
+  /* produto */
+  --laranja: #ff7622;
+  --laranja-claro: #fb6d3a;
+  /* base */
+  --cinza-escuro: #32343E;
+  --cinza: #6B6E82;
+  --cinza-claro: #d2d4e4;
+  --branco: #F0F5FA;
+  --branco-escuro: #ECECEC;
+  /* feedback */
+  --sucesso: #2A7138;
+  --perigo: #CD1422;
+  --verde-claro: #29Cb41;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
