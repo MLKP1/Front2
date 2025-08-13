@@ -1,0 +1,247 @@
+/* Variáveis CSS para facilitar a manutenção das cores */
+:root {
+    --primary-color: #e44d26; /* Laranja/Vermelho para destaque */
+    --secondary-color: #333; /* Texto escuro */
+    --background-light: #f8f8f8; /* Fundo claro */
+    --background-dark: #eee; /* Fundo de seção/card um pouco mais escuro */
+    --text-light: #fff; /* Texto claro */
+    --border-color: #ddd; /* Cor da borda */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px; /* Largura máxima para desktops */
+    margin: 0 auto;
+    background-color: var(--text-light);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
+}
+
+/* Header - Barra superior */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 40px; /* Tamanho do logo */
+    border-radius: 50%; /* Se o logo for quadrado, deixa redondo */
+    background-color: var(--text-light); /* Fundo branco para o logo */
+    padding: 5px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.icon-link:hover {
+    color: #ffd700; /* Dourado ao passar o mouse */
+}
+
+.icon-link i {
+    font-size: 1.2rem;
+}
+
+
+/* Conteúdo do Menu */
+.menu-content {
+    padding: 20px;
+}
+
+.menu-content h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block; /* Para o underline ficar apenas no texto */
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.category {
+    margin-bottom: 40px;
+    display: grid;
+    gap: 25px;
+    /* Layout responsivo para os itens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.menu-item {
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    overflow: hidden; /* Garante que a imagem arredonde com o card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column; /* Conteúdo empilhado verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.item-img {
+    width: 100%;
+    height: 180px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    display: block; /* Remove espaço extra abaixo da imagem */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.item-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que o info ocupe o espaço restante */
+}
+
+.item-info h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.item-info .description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Permite que a descrição ocupe o espaço restante */
+}
+
+.price-add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Espaçamento acima do preço e botão */
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 25px; /* Botão arredondado */
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c93d1f; /* Cor um pouco mais escura ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-icons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .menu-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .category {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .icon-link {
+        font-size: 0.9rem;
+    }
+
+    .menu-content {
+        padding: 15px;
+    }
+
+    .menu-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .menu-item {
+        border-radius: 8px;
+    }
+
+    .item-img {
+        height: 150px;
+    }
+
+    .item-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .price {
+        font-size: 1.2rem;
+    }
+
+    .add-to-cart-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
