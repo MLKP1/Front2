@@ -1,0 +1,100 @@
+/* Estilos gerais do corpo da página (mantidos do exemplo anterior) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.card {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+.card h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}
+.input-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 400;
+}
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.input-group input:focus {
+    border-color: #ff6347;
+    outline: none;
+}
+.register-button {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.register-button:hover {
+    background-color: #e55337;
+}
+@media (max-width: 480px) {
+    .card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+/* Fim dos estilos gerais */
+
+/* Novos estilos para o ícone de mostrar senha */
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    /* Ajusta o padding para o ícone não cobrir o texto */
+    padding-right: 2.5rem;
+}
+
+.password-container i {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.password-container i:hover {
+    color: #333;
+}
