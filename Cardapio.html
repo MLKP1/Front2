@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrinho da Pizzaria</title>
-  <link rel="stylesheet" href="Cardapio.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu da Pizzaria Sabor Supremo</title>
+    <link rel="stylesheet" href="css/cardapio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🍕 Cardápio da Pizzaria</h1>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="assets/images/logo.webp" alt="Logo Sabor Supremo" class="logo">
+                <h1>Menu</h1>
+            </div>
+            <div class="header-icons">
+                <a href="#" class="icon-link"><i class="fas fa-shopping-cart"></i> Carrinho (<span id="cart-count">0</span>)</a>
+                <a href="login/login1.html" class="icon-link"><i class="fas fa-user"></i> Entrar</a>
+            </div>
+        </header>
 
-    <div class="produtos">
-      <div class="item">
-        <img src="assets/images/Pizza_Calabresa.png" alt="Pizza Calabresa">
-        <div class="conteudo-texto">
-          <h3>Pizza Calabresa</h3>
-          <p>Molho, mussarela, calabresa e cebola</p>
-          <span>R$ 35,00</span>
-          <button onclick="adicionarItem('Pizza Calabresa', 35)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/4_queijos.jpg" alt="Pizza 4 Queijos">
-        <div class="conteudo-texto">
-          <h3>Pizza 4 Queijos</h3>
-          <p>Mussarela, provolone, gorgonzola e parmesão</p>
-          <span>R$ 42,00</span>
-          <button onclick="adicionarItem('Pizza 4 Queijos', 42)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/4_carnes.jpg" alt="Pizza 4 Carnes">
-        <div class="conteudo-texto">
-          <h3>Pizza 4 Carnes</h3>
-          <p>Mussarela, Bacon, Calabresa, Presunto e Lombo</p>
-          <span>R$ 46,00</span>
-          <button onclick="adicionarItem('Pizza 4 Carnes', 46)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/pizza-de-frango-com-catupiry.jpg" alt="Pizza de Frango Catupiry">
-        <div class="conteudo-texto">
-          <h3>Pizza Frango Catupiry</h3>
-          <p>Mussarela, Frango e Catupiry</p>
-          <span>R$ 39,00</span>
-          <button onclick="adicionarItem('Pizza Frango Catupiry', 39)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/Doritos.jpg" alt="Pizza Doritos">
-        <div class="conteudo-texto">
-          <h3>Pizza Doritos</h3>
-          <p>Mussarela, Doritos e Cheddar</p>
-          <span>R$ 37,00</span>
-          <button onclick="adicionarItem('Pizza Doritos', 37)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/ovomaltine.png" alt="Pizza de Ovomaltine">
-        <div class="conteudo-texto">
-          <h3>Pizza de Ovomaltine</h3>
-          <p>Chocolate e Ovomaltine em Pó</p>
-          <span>R$ 35,00</span>
-          <button onclick="adicionarItem('Pizza de Ovomaltine', 35)">Adicionar</button>
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/portuguesa.jpg" alt="Pizza Portuguesa">
-        <div class="conteudo-texto">
-          <h3>Pizza Portuguesa</h3>
-          <p>Mussarela, Presunto, Ovo, ervilha</p>
-          <span>R$ 40,00</span>
-          <button onclick="adicionarItem('Pizza Portuguesa', 40)">Adicionar</button>
-        </div>
-      </div>
+        <main class="menu-content">
+            <h2>Pizzas Salgadas</h2>
+            <div class="category">
+                <div class="menu-item">
+                    <img src="assets/images/Pizza_Calabresa.png" alt="Pizza de Calabresa" class="item-img">
+                    <div class="item-info">
+                        <h3>Pizza Calabresa</h3>
+                        <p class="description">Molho de tomate especial, mussarela, calabresa fatiada e cebola roxa.</p>
+                        <div class="price-add">
+                            <span class="price">R$ 38,00</span>
+                            <button class="add-to-cart-btn" data-name="Pizza Calabresa" data-price="38.00">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="assets/images/4_queijos.jpg" alt="Pizza Quatro Queijos" class="item-img">
+                    <div class="item-info">
+                        <h3>Pizza Quatro Queijos</h3>
+                        <p class="description">Combinação perfeita de mussarela, provolone, gorgonzola e parmesão.</p>
+                        <div class="price-add">
+                            <span class="price">R$ 45,00</span>
+                            <button class="add-to-cart-btn" data-name="Pizza Quatro Queijos" data-price="45.00">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="assets/images/pizza-de-frango-com-catupiry.jpg" alt="Pizza Frango com Catupiry" class="item-img">
+                    <div class="item-info">
+                        <h3>Pizza Frango com Catupiry</h3>
+                        <p class="description">Delicioso frango desfiado com cremoso Catupiry original.</p>
+                        <div class="price-add">
+                            <span class="price">R$ 42,00</span>
+                            <button class="add-to-cart-btn" data-name="Pizza Frango Catupiry" data-price="42.00">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <h2>Pizzas Doces</h2>
+            <div class="category">
+                <div class="menu-item">
+                    <img src="assets/images/ovomaltine.png" alt="Pizza de ovomaltine" class="item-img">
+                    <div class="item-info">
+                        <h3>Pizza de Chocolate</h3>
+                        <p class="description">Creme de chocolate, com ovomaltine em pó.</p>
+                        <div class="price-add">
+                            <span class="price">R$ 40,00</span>
+                            <button class="add-to-cart-btn" data-name="Pizza de Chocolate" data-price="40.00">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </main>
     </div>
-  </div>
 
+    <script src="js/cardapio.js"></script>
 </body>
 </html>
