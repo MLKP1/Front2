@@ -13,7 +13,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: rgba(165, 24, 24, 0.95);
+    background-color: rgb(165, 24, 24);
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -27,7 +27,6 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(165, 24, 24, 0.85);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -76,25 +75,15 @@ nav ul li .nav-btn {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-nav ul li .login-btn {
+nav ul li .login-btn, nav ul li .cadastro-btn {
     background-color: transparent;
     border: 2px solid #ffd700;
     color: #ffd700;
 }
 
-nav ul li .login-btn:hover {
+nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     background-color: #ffd700;
     color: #a31818;
-    transform: translateY(-2px);
-}
-
-nav ul li .cadastro-btn {
-    background-color: #ffd700;
-    color: #a31818;
-}
-
-nav ul li .cadastro-btn:hover {
-    background-color: #e6c200;
     transform: translateY(-2px);
 }
 
@@ -152,7 +141,6 @@ footer {
     color: white;
     text-align: center;
     padding: 2rem;
-    margin-top: 2rem;
 }
 
 footer p {
