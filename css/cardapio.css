@@ -35,10 +35,13 @@ body {
 }
 
 .logo {
-    height: 40px; /* Tamanho do logo */
-    border-radius: 50%; /* Se o logo for quadrado, deixa redondo */
-    background-color: var(--text-light); /* Fundo branco para o logo */
-    padding: 5px;
+    height: auto; /* Ajusta a altura automaticamente */
+    border-radius: 0; /* Remove o arredondamento */
+    background-color: transparent; /* Remove o fundo branco */
+    padding: 0; /* Remove o preenchimento */
+    color: var(--text-light); /* Garante que o texto fique branco */
+    font-size: 1.8rem; /* Ajusta o tamanho da fonte */
+    font-weight: bold; /* Deixa o texto em negrito */
 }
 
 .header h1 {
