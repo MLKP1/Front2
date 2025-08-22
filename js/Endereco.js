@@ -65,6 +65,14 @@ async function cadastrarEndereco(e) {
     cadastrarButton.disabled = false;
     cadastrarButton.textContent = 'Cadastrar';
   }
+  ['cep', 'numero'].forEach(id => {
+  const input = document.getElementById(id);
+  if (input) {
+    input.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '');
+    });
+  }
+});
 }
 
 cadastrarButton.addEventListener('click', cadastrarEndereco);
