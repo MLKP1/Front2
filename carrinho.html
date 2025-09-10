@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="css/carrinho.css">
+    <title>Pizzaria Sabor Italiano - Carrinho</title>
+    <link rel="stylesheet" href="css/carrinho.css   ">
 </head>
 <body>
     <header id="header">
@@ -15,21 +15,25 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Cardapio.html">Cardápio</a></li>
-                <li><a href="carrinho.html" style="font-weight: bold;">Carrinho</a></li>
+                <li><a href="Cardapio.html" style="font-weight: bold;">Cardápio</a></li>
+                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+                <li><a href="#Perfil">Perfil</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="menu-content">
+    <main>
         <h2 class="section-title">Carrinho de Compras</h2>
         <div id="cart-items"></div>
+        <p id="cart-empty" style="display: none; text-align: center; color: var(--secondary-color);">Seu carrinho está vazio.</p>
         <p id="cart-total">Total: R$ 0.00</p>
-        <button id="clear-cart-btn" class="add-to-cart-btn">Limpar Carrinho</button>
+        <button id="clear-cart-btn">Limpar Carrinho</button>
     </main>
 
     <footer>
-        <p>Pizzaria Sabor Italiano &copy; 2025</p>
+        <p>Pizzaria Sabor Italiano © 2025</p>
         <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
     </footer>
 
