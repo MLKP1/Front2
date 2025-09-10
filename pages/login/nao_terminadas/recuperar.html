@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Senha</title>
-    <link rel="stylesheet" href="Recuperar.css">
+    <link rel="stylesheet" href="../../../css/autenticacao/Recuperar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     <div class="screen-container">
         <header class="header">
-            <span class="material-symbols-outlined back-arrow-circle">arrow_back_ios</span>
+            <a href="../../../index.html" class="back-link">
+                <span class="material-symbols-outlined back-arrow-circle">arrow_back_ios</span>
+            </a>
+
             <h1 class="header-title">Recuperar senha</h1>
             <p class="header-subtitle">Faça login na sua conta existente</p>
         </header>
@@ -19,9 +22,10 @@
             <div class="input-group">
                 <label for="rec-email">Email</label>
                 <input type="email" id="rec-email" placeholder="lucas@gmail.com">
-            </div>
-
+            </div>      
+            <a href="../../login/nao_terminadas/Verificacao.html" class="link">
             <button class="primary-button full-width">Enviar código</button>
+            </a>
         </main>
     </div>
 </body>
