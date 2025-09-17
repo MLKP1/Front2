@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu da Pizzaria Sabor Italiano</title>
+    <title>Pizzaria Sabor Italiano</title>
     <link rel="stylesheet" href="css/cardapio.css">
 </head>
 <body>
@@ -14,92 +14,68 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Cardapio.html" style="font-weight: bold;">Cardápio</a></li>
+                <li><a href="index.html" style="font-weight: bold;">Home</a></li>
+                <li><a href="Cardapio.html">Cardápio</a></li>
                 <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
                 <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
-                <li><a href="carrinho.html">Carrinho</a></li>
-                <li><a href="#Perfil">Perfil</a></li>
+                <li><a href="pages/login/nao_terminadas/Perfil.html">Perfil</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="menu-content">
+    <div class="menu-content">
         <h2 class="section-title">Pizzas Salgadas</h2>
-<div class="category pizzas-salgadas">
+        <div class="category pizzas-salgadas">
             <div class="menu-item">
-                <img src="assets/images/Pizza_Calabresa.png" alt="Pizza de Calabresa" class="item-img">
+                <img src="calabresa.jpg" alt="Pizza Calabresa" class="item-img">
                 <div class="item-info">
                     <h3>Pizza Calabresa</h3>
                     <p class="description">Molho de tomate especial, mussarela, calabresa fatiada e cebola roxa.</p>
                     <div class="price-add">
                         <span class="price">R$ 38,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza Calabresa"
-                            data-price="38.00">Adicionar</button>
+                        <button class="add-to-cart-btn" data-name="Pizza Calabresa" data-price="38.00">Adicionar</button>
                     </div>
                 </div>
             </div>
-
             <div class="menu-item">
-                <img src="assets/images/4_queijos.jpg" alt="Pizza Quatro Queijos" class="item-img">
+                <img src="quatro_queijos.jpg" alt="Pizza Quatro Queijos" class="item-img">
                 <div class="item-info">
                     <h3>Pizza Quatro Queijos</h3>
                     <p class="description">Combinação perfeita de mussarela, provolone, gorgonzola e parmesão.</p>
                     <div class="price-add">
                         <span class="price">R$ 45,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza Quatro Queijos"
-                            data-price="45.00">Adicionar</button>
+                        <button class="add-to-cart-btn" data-name="Pizza Quatro Queijos" data-price="45.00">Adicionar</button>
                     </div>
                 </div>
             </div>
-
             <div class="menu-item">
-                <img src="assets/images/4_queijos.jpg" alt="Pizza Quatro Queijos" class="item-img">
-                <div class="item-info">
-                    <h3>Pizza Quatro Queijos</h3>
-                    <p class="description">Combinação perfeita de mussarela, provolone, gorgonzola e parmesão.</p>
-                    <div class="price-add">
-                        <span class="price">R$ 45,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza Quatro Queijos"
-                            data-price="45.00">Adicionar</button>
-                    </div>
-                </div>
-            </div>
-
-            
-
-            <div class="menu-item">
-                <img src="assets/images/pizza-de-frango-com-catupiry.jpg" alt="Pizza Portuguesa"
-                    class="item-img">
+                <img src="portuguesa.jpg" alt="Pizza Portuguesa" class="item-img">
                 <div class="item-info">
                     <h3>Pizza Portuguesa</h3>
-                    <p class="description">Queijo, presunto, ovo, evervilha, cebola.</p>
+                    <p class="description">Queijo, presunto, ovo, ervilha, cebola.</p>
                     <div class="price-add">
                         <span class="price">R$ 42,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza Portuguesa"
-                            data-price="42.00">Adicionar</button>
+                        <button class="add-to-cart-btn" data-name="Pizza Portuguesa" data-price="42.00">Adicionar</button>
                     </div>
                 </div>
             </div>
             <div class="menu-item">
-                <img src="assets/images/pizza-de-frango-com-catupiry.jpg" alt="Pizza de Frango com Catupiry"
-                    class="item-img">
+                <img src="frango_catupiry.jpg" alt="Pizza Frango com Catupiry" class="item-img">
                 <div class="item-info">
                     <h3>Pizza Frango com Catupiry</h3>
                     <p class="description">Delicioso frango desfiado com cremoso Catupiry original.</p>
                     <div class="price-add">
                         <span class="price">R$ 42,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza Frango Catupiry"
-                            data-price="42.00">Adicionar</button>
+                        <button class="add-to-cart-btn" data-name="Pizza Frango com Catupiry" data-price="42.00">Adicionar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2>Pizzas Doces</h2>
+        <h2 class="section-title">Pizzas Doces</h2>
         <div class="category pizzas-doces">
             <div class="menu-item">
-                <img src="assets/images/ovomaltine.png" alt="Pizza de Ovomaltine" class="item-img">
+                <img src="chocolate.jpg" alt="Pizza de Chocolate" class="item-img">
                 <div class="item-info">
                     <h3>Pizza de Chocolate</h3>
                     <p class="description">Creme de chocolate, com ovomaltine em pó.</p>
@@ -109,9 +85,8 @@
                     </div>
                 </div>
             </div>
-        
             <div class="menu-item">
-                <img src="assets/images/brigadeiro.jpg" alt="Pizza de Brigadeiro" class="item-img">
+                <img src="brigadeiro.jpg" alt="Pizza de Brigadeiro" class="item-img">
                 <div class="item-info">
                     <h3>Pizza de Brigadeiro</h3>
                     <p class="description">Creme de chocolate e granulado.</p>
@@ -122,57 +97,127 @@
                 </div>
             </div>
             <div class="menu-item">
-                <img src="assets/images/brigadeiro.jpg" alt="Pizza de Brigadeiro" class="item-img">
+                <img src="banana_caramelada.jpg" alt="Pizza de Banana Caramelada" class="item-img">
                 <div class="item-info">
-                    <h3>Pizza de Brigadeiro</h3>
-                    <p class="description">Creme de chocolate e granulado.</p>
+                    <h3>Pizza de Banana Caramelada</h3>
+                    <p class="description">Banana fatiada com caramelo e toque de canela.</p>
                     <div class="price-add">
-                        <span class="price">R$ 40,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza de Brigadeiro" data-price="40.00">Adicionar</button>
+                        <span class="price">R$ 42,00</span>
+                        <button class="add-to-cart-btn" data-name="Pizza de Banana Caramelada" data-price="42.00">Adicionar</button>
                     </div>
                 </div>
             </div>
             <div class="menu-item">
-                <img src="assets/images/brigadeiro.jpg" alt="Pizza de Brigadeiro" class="item-img">
+                <img src="romeu_julieta.jpg" alt="Pizza de Romeu e Julieta" class="item-img">
                 <div class="item-info">
-                    <h3>Pizza de Brigadeiro</h3>
-                    <p class="description">Creme de chocolate e granulado.</p>
+                    <h3>Pizza de Romeu e Julieta</h3>
+                    <p class="description">Goiabada cremosa com queijo mussarela.</p>
                     <div class="price-add">
-                        <span class="price">R$ 40,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza de Brigadeiro" data-price="40.00">Adicionar</button>
+                        <span class="price">R$ 41,00</span>
+                        <button class="add-to-cart-btn" data-name="Pizza de Romeu e Julieta" data-price="41.00">Adicionar</button>
                     </div>
                 </div>
             </div>
             <div class="menu-item">
-                <img src="assets/images/brigadeiro.jpg" alt="Pizza de Brigadeiro" class="item-img">
+                <img src="romeu_julieta.jpg" alt="Pizza de Romeu e Julieta" class="item-img">
                 <div class="item-info">
-                    <h3>Pizza de Brigadeiro</h3>
-                    <p class="description">Creme de chocolate e granulado.</p>
+                    <h3>Pizza de Romeu e Julieta</h3>
+                    <p class="description">Goiabada cremosa com queijo mussarela.</p>
                     <div class="price-add">
-                        <span class="price">R$ 40,00</span>
-                        <button class="add-to-cart-btn" data-name="Pizza de Brigadeiro" data-price="40.00">Adicionar</button>
+                        <span class="price">R$ 41,00</span>
+                        <button class="add-to-cart-btn" data-name="Pizza de Romeu e Julieta" data-price="41.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="romeu_julieta.jpg" alt="Pizza de Romeu e Julieta" class="item-img">
+                <div class="item-info">
+                    <h3>Pizza de Romeu e Julieta</h3>
+                    <p class="description">Goiabada cremosa com queijo mussarela.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 41,00</span>
+                        <button class="add-to-cart-btn" data-name="Pizza de Romeu e Julieta" data-price="41.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Bebidas</h2>
+        <div class="category bebidas">
+            <div class="menu-item">
+                <img src="refrigerante.jpg" alt="Refrigerante Lata" class="item-img">
+                <div class="item-info">
+                    <h3>Refrigerante Lata</h3>
+                    <p class="description">Coca-Cola, Guaraná ou Sprite, 350ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 6,00</span>
+                        <button class="add-to-cart-btn" data-name="Refrigerante Lata" data-price="6.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="suco.jpg" alt="Suco Natural" class="item-img">
+                <div class="item-info">
+                    <h3>Suco Natural</h3>
+                    <p class="description">Laranja, limão ou abacaxi, 300ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 8,00</span>
+                        <button class="add-to-cart-btn" data-name="Suco Natural" data-price="8.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="suco.jpg" alt="Suco Natural" class="item-img">
+                <div class="item-info">
+                    <h3>Suco Natural</h3>
+                    <p class="description">Laranja, limão ou abacaxi, 300ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 8,00</span>
+                        <button class="add-to-cart-btn" data-name="Suco Natural" data-price="8.00">Adicionar</button>
                     </div>
                 </div>
             </div>  
+            <div class="menu-item">
+                <img src="suco.jpg" alt="Suco Natural" class="item-img">
+                <div class="item-info">
+                    <h3>Suco Natural</h3>
+                    <p class="description">Laranja, limão ou abacaxi, 300ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 8,00</span>
+                        <button class="add-to-cart-btn" data-name="Suco Natural" data-price="8.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="agua.jpg" alt="Água Mineral" class="item-img">
+                <div class="item-info">
+                    <h3>Água Mineral</h3>
+                    <p class="description">Água com ou sem gás, 500ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 4,00</span>
+                        <button class="add-to-cart-btn" data-name="Água Mineral" data-price="4.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="cerveja.jpg" alt="Cerveja Lata" class="item-img">
+                <div class="item-info">
+                    <h3>Cerveja Lata</h3>
+                    <p class="description">Brahma ou Heineken, 350ml.</p>
+                    <div class="price-add">
+                        <span class="price">R$ 10,00</span>
+                        <button class="add-to-cart-btn" data-name="Cerveja Lata" data-price="10.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
 
     <footer>
-        <p>Pizzaria Sabor Italiano &copy; 2025</p>
+        <p>Pizzaria Sabor Italiano © 2025</p>
         <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
     </footer>
 
-    <script>
-        // Efeito de transparência no header ao rolar
-        /* window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }); */
-    </script>
     <script src="js/cardapio.js"></script>
 </body>
 </html>
