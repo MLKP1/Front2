@@ -120,7 +120,7 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     display: grid;
     gap: 25px;
     /* Layout responsivo para os itens */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
 }
 
 .menu-item {
@@ -131,6 +131,7 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     display: flex;
     flex-direction: column; /* Conteúdo empilhado verticalmente */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ 
 }
 
 .menu-item:hover {
