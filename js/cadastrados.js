@@ -2,17 +2,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const enderecosList = document.getElementById('enderecos-list');
 
     try {
-        // Faz uma requisição para buscar os endereços do backend
-        const response = await axios.get('http://localhost:3000/api/enderecos');
+        // Altere para o mesmo backend usado no cadastro
+        const response = await axios.get('https://back-mjk6.onrender.com/api/enderecos');
         const enderecos = response.data;
 
-        // Verifica se há endereços cadastrados
         if (enderecos.length === 0) {
             enderecosList.innerHTML = '<p>Nenhum endereço cadastrado.</p>';
             return;
         }
 
-        // Renderiza os endereços na página
         enderecos.forEach(endereco => {
             const enderecoElement = document.createElement('div');
             enderecoElement.classList.add('endereco-item');
