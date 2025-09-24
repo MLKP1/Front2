@@ -30,6 +30,19 @@
         <p id="cart-empty" style="display: none; text-align: center; color: var(--secondary-color);">Seu carrinho está vazio.</p>
         <p id="cart-total">Total: R$ 0.00</p>
         <button id="clear-cart-btn">Limpar Carrinho</button>
+        <button id="checkout-btn">Concluir Pagamento</button>
+
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>Concluir Pagamento</h3>
+                <p>Use o QR Code abaixo para realizar o pagamento via Pix.</p>
+                <div id="pix-qr-code">
+                    <img src="assets/images/qrcode.png" alt="QR Code para pagamento via Pix">
+                </div>
+            </div>
+        </div>
+        
     </main>
 
     <footer>
