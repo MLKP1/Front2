@@ -174,7 +174,7 @@ function clearCart() {
 document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', () => {
+        clearCartBtn.addEventListener('dblclick', () => {
             console.log('Botão Limpar Carrinho clicado');
             clearCart();
         });
