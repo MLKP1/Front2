@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Senha</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/nova_senha.css">
+</head>
+<body>
+    <header>
+        <a href="#" onclick="goBack()"><span class="material-icons">arrow_back_ios</span></a>
+        <h1>Alterar Senha</h1>
+        <p>Insira sua nova senha abaixo</p>
+    </header>
+
+    <section class="form-section">
+        <form id="passwordForm">
+            <div class="form-group">
+                <label for="nova-senha">Nova Senha</label>
+                <input type="password" id="nova-senha" name="nova-senha" required>
+            </div>
+            <button type="submit" class="botao salvar-senha">Salvar Senha</button>
+        </form>
+    </section>
+
+    <script src="../../../js/nova_senha.js"></script>
+</body>
+</html>
