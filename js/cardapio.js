@@ -79,3 +79,37 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Inicializando cardápio');
     updateCartCount();
 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const baseUrlApi = "https://localhost:3333/products/pizzas"
+    const pizzasSalgadas = document.getElementsByClassName('pizzas-salgadas')[0];
+
+    try {
+        const response = await axios.get(baseUrlApi);
+        console.log(response.data);
+        const pizzas = response.data;
+        pizzasSalgadas.removeChild(pizzasSalgadas.firstChild);
+
+        if (!pizzas) {
+            pizzasSalgadas.innerHTML = '<p>Nenhuma pizza cadastrada.</p>';
+            return;
+        }
+
+        pizzas.forEach(pizza => {
+            const pizzaElement = document.createElement('div');
+            pizzaElement.classList.add('pizza-item');
+            pizzaElement.innerHTML = `
+                <img src="${pizza.imageUrl}" alt="${pizza.name}">
+                <h3>${pizza.name}</h3>
+                <p>${pizza.description}</p>
+                <p>Preço: R$ ${pizza.price.toFixed(2)}</p>
+                <button class="add-to-cart-btn" data-name="${pizza.name}" data-price="${pizza.price}">Adicionar</button>
+            `;
+            pizzasSalgadas.appendChild(pizzaElement);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar as pizzas:', error);
+        pizzasSalgadas.innerHTML = '<p>Erro ao carregar as pizzas. Tente novamente mais tarde.</p>';
+        return;
+    }
+});

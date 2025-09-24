@@ -174,11 +174,58 @@ function clearCart() {
 document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', () => {
+        clearCartBtn.addEventListener('dblclick', () => {
             console.log('Botão Limpar Carrinho clicado');
             clearCart();
         });
     }
     console.log('Carregando carrinho na inicialização');
     loadCart();
+});
+
+// Função para abrir o modal
+function openModal() {
+    const modal = document.getElementById('payment-modal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+// Função para fechar o modal
+function closeModal() {
+    const modal = document.getElementById('payment-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Adiciona eventos para abrir e fechar o modal
+document.addEventListener('DOMContentLoaded', () => {
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const closeModalBtn = document.querySelector('.close-btn');
+
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            console.log('Abrindo modal de pagamento');
+            openModal();
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            console.log('Fechando modal de pagamento');
+            closeModal();
+        });
+    }
+
+    // Fecha o modal ao clicar fora do conteúdo
+    const modal = document.getElementById('payment-modal');
+    if (modal) {
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                console.log('Fechando modal ao clicar fora do conteúdo');
+                closeModal();
+            }
+        });
+    }
 });
