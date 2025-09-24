@@ -42,7 +42,7 @@ body {
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: #fff;
+    background-color: var(--dark-grey-text);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -55,7 +55,7 @@ body {
 .profile-text {
     font-size: 18px;
     font-weight: 600;
-    color: var(--dark-grey-text);
+    color: #fff;
 }
 
 .profile-info {
@@ -84,7 +84,7 @@ body {
 .profile-name {
     font-size: 22px;
     font-weight: 600;
-    color: var(--dark-grey-text);
+    color: #fff;
 }
 
 .menu {
@@ -97,7 +97,7 @@ body {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    background-color: #fff;
+    background-color: white;
     margin-bottom: 8px;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
