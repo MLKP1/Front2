@@ -81,13 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const baseUrlApi = "https://localhost:3333/products/pizzas"
+    const baseUrlApi = "http://localhost:3333/products/pizzas"
     const pizzasSalgadas = document.getElementsByClassName('pizzas-salgadas')[0];
 
     try {
-        const response = await axios.get(baseUrlApi);
-        console.log(response.data);
-        const pizzas = response.data;
+        const response = await axios.get(baseUrlApi, {
+            withCredentials: true,
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvaXE3bXR5bzFwamIxMW1reng3MXU1NzUiLCJyZXN0YXVyYW50SWQiOiJseDFsZ3FhcDJyaHBldHVpNnljd2p5NDMifQ.mEo-afzDl0YaE6W_tmlBE1QuKR4KUGwTaFWmswkC8bA"
+            }
+        });
+        const { pizzas } = response.data;
+        console.log(pizzas);
+
         pizzasSalgadas.removeChild(pizzasSalgadas.firstChild);
 
         if (!pizzas) {
@@ -95,15 +101,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
+        pizzasSalgadas.innerHTML = '';
+
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div');
-            pizzaElement.classList.add('pizza-item');
+            pizzaElement.classList.add('menu-item');
             pizzaElement.innerHTML = `
-                <img src="${pizza.imageUrl}" alt="${pizza.name}">
-                <h3>${pizza.name}</h3>
-                <p>${pizza.description}</p>
-                <p>Preço: R$ ${pizza.price.toFixed(2)}</p>
-                <button class="add-to-cart-btn" data-name="${pizza.name}" data-price="${pizza.price}">Adicionar</button>
+                <img src="${pizza.image}" alt="${pizza.name}" height="150" width="150" class="item-img">
+                <div class="item-info">
+                    <h3>${pizza.name}</h3>
+                    <p class="description">${pizza.description}</p>
+                    <div class="price-add">
+                        <span class="price">R$ ${(pizza.price / 100).toFixed(2).replace('.', ',')}</span>
+                        <button class="add-to-cart-btn" data-name="${pizza.name}" data-price="${pizza.price / 100}">Adicionar</button>
+                    </div>
+                </div>
             `;
             pizzasSalgadas.appendChild(pizzaElement);
         });

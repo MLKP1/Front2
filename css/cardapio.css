@@ -8,6 +8,13 @@
     --border-color: #ddd; /* Cor da borda */
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -99,7 +106,6 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 /* Conteúdo do Menu */
 .menu-content {
     padding: 20px;
-    margin-top: 80px; /* Espaço para compensar o header fixo */
 }
 
 .menu-content h2 {
@@ -118,20 +124,19 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 .category {
     margin-bottom: 40px;
     display: grid;
-    gap: 25px;
-    /* Layout responsivo para os itens */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+    gap: 30px;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
 }
 
 .menu-item {
     background-color: var(--background-dark);
     border-radius: 12px;
-    overflow: hidden; /* Garante que a imagem arredonde com o card */
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     display: flex;
-    flex-direction: column; /* Conteúdo empilhado verticalmente */
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
- 
 }
 
 .menu-item:hover {
@@ -170,6 +175,7 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 
 .price-add {
     display: flex;
+    gap: 32px;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px; /* Espaçamento acima do preço e botão */
