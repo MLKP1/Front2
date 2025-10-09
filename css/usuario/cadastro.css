@@ -1,100 +1,140 @@
-/* Estilos gerais do corpo da página (mantidos do exemplo anterior) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* Importa a fonte 'Poppins' e define as variáveis do tema do Perfil.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --primary-orange: #FF6B00;
+    --light-grey-bg: #F5F5F5;
+    --dark-grey-text: #333333;
+    --medium-grey-text: #666666;
+    --border-grey: #EEEEEE;
+    /* Adicionando cores para feedback de erro/sucesso se necessário */
+    --error-red: #DC3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--light-grey-bg);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px; /* Garante espaçamento em telas muito pequenas */
 }
+
+/* Container principal (simula o layout mobile centralizado em desktop) */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    max-width: 400px; /* Largura ideal para formulários */
+    padding-top: 50px; /* Espaço no topo para um visual mais leve */
 }
+
+/* O Card do formulário (Similar ao .container ou .menu-item no Perfil.css) */
 .card {
     background-color: #fff;
-    padding: 2.5rem;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-grey-text);
+    margin-bottom: 25px;
     text-align: center;
 }
-.card h2 {
-    margin-bottom: 1.5rem;
-    color: #333;
-    font-weight: 600;
-}
+
+/* Grupo de Input */
 .input-group {
-    margin-bottom: 1.25rem;
-    text-align: left;
+    margin-bottom: 20px;
 }
+
 .input-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--medium-grey-text);
+    margin-bottom: 8px;
 }
-.input-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-.input-group input:focus {
-    border-color: #ff6347;
-    outline: none;
-}
-.register-button {
-    width: 100%;
-    padding: 0.85rem;
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.register-button:hover {
-    background-color: #e55337;
-}
-@media (max-width: 480px) {
-    .card {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-}
-/* Fim dos estilos gerais */
 
-/* Novos estilos para o ícone de mostrar senha */
+.input-group input[type="text"],
+.input-group input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: var(--dark-grey-text);
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-orange);
+}
+
+/* Estilo específico para o campo de senha com ícone */
 .password-container {
     position: relative;
 }
 
-.password-container input {
-    /* Ajusta o padding para o ícone não cobrir o texto */
-    padding-right: 2.5rem;
+.password-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: var(--dark-grey-text);
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    padding-right: 40px; /* Espaço para o ícone */
 }
 
-.password-container i {
+.password-container input:focus {
+    border-color: var(--primary-orange);
+}
+
+/* Ícone de alternância de senha */
+#toggle-password {
     position: absolute;
+    right: 12px;
     top: 50%;
-    right: 1rem;
     transform: translateY(-50%);
+    color: var(--medium-grey-text);
     cursor: pointer;
-    color: #999;
-    transition: color 0.3s ease;
+    font-size: 18px;
 }
 
-.password-container i:hover {
-    color: #333;
+/* Botão de Cadastro (register-button) - Similar ao botão Salvar Senha */
+.register-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--primary-orange);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(255, 107, 0, 0.3); /* Sombra mais forte para destaque */
+}
+
+.register-button:hover {
+    background-color: #e65c00; /* Cor um pouco mais escura ao passar o mouse */
+    box-shadow: 0 6px 10px rgba(255, 107, 0, 0.4);
+}
+
+.register-button:active {
+    background-color: #cc5200;
+    box-shadow: none;
 }

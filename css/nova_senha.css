@@ -1,118 +1,138 @@
-/* General reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+/* Root variables for consistent theming - matching the Cadastro image */
+:root {
+    --primary-color: #f97316; /* Orange for button and accents */
+    --background-color: #f9fafb; /* Very light gray background */
+    --text-color: #374151; /* Dark gray text */
+    --border-color: #d1d5db; /* Light gray border */
+    --input-bg: #ffffff; /* White input background */
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    --header-bg: #ffffff; /* White header background */
 }
 
+/* General body styles */
 body {
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Header styles */
 header {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-header a {
-    text-decoration: none;
-    color: #333;
-    font-size: 24px;
-    margin-right: 15px;
-}
-
-header .material-icons {
-    font-size: 24px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
 }
 
 header h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 10px 0;
 }
 
-header p {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-}
-
-/* Form section */
-section {
-    margin: 10px;
+/* Form section styles */
+.form-section {
+    width: 100%;
+    max-width: 400px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
+    background-color: var(--header-bg);
+    box-shadow: var(--shadow-light);
+    border-radius: 0 0 8px 8px;
+    margin-top: 0;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
 .form-group input {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    outline: none;
+    font-size: 16px;
+    background-color: var(--input-bg);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
 }
 
 .form-group input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
-button {
+/* Password input with eye icon (simulated via placeholder styling) */
+.form-group input[type="password"] {
+    padding-right: 40px; /* Space for eye icon */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%2364748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.form-group input[type="password"]:focus {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/></svg>');
+}
+
+/* Button styles */
+.botao.salvar-senha {
     width: 100%;
     padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
     font-size: 16px;
-    font-weight: 500;
-    background-color: #007bff;
-    color: #fff;
+    font-weight: 600;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: #0056b3;
+.botao.salvar-senha:hover {
+    background-color: #f76707;
+}
+
+.botao.salvar-senha:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
 }
 
 /* Responsive design */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
+    header, .form-section {
+        max-width: 100%;
+        padding: 15px;
+    }
+
     header h1 {
-        font-size: 20px;
-    }
-
-    header p {
-        font-size: 12px;
-    }
-
-    .form-group label {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .form-group input {
         font-size: 14px;
     }
 
-    button {
+    .botao.salvar-senha {
         font-size: 14px;
-        padding: 10px;
     }
 }
