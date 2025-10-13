@@ -1,0 +1,24 @@
+/* Estilo para a lista de endereços */
+.enderecos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo para cada item de endereço */
+.endereco-item {
+    background-color: var(--light-grey-bg);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.endereco-info p {
+    margin: 5px 0;
+    font-size: clamp(14px, 4vw, 16px);
+    color: var(--dark-grey-text);
+}
+
+.endereco-info p strong {
+    color: var(--dark-bg);
+}

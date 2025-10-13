@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endereços Cadastrados</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../css/endereco/Endereco.css">
+</head>
+<body>
+    <div class="screen-container">
+        <div class="header">
+            <a href="../../pages/endereco/endereços.html" class="back-link">
+                <div class="back-arrow-circle" onclick="goBack()">←</div>
+            </a>    
+            <h1 class="header-title">Endereços Cadastrados</h1>
+            <p class="header-subtitle">Veja os endereços que você já cadastrou</p>
+        </div>
+        <div class="content-area">
+            <div id="enderecos-list" class="enderecos-list">
+                <!-- Os endereços cadastrados serão exibidos aqui -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../Front2/js/cadastrados.js"></script>
+</body>
+</html>

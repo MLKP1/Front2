@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-orange: #FF6B00;
+    --dark-bg: #333333;
+    --light-grey-bg: #F5F5F5;
+    --dark-grey-text: #333333;
+    --medium-grey-text: #666666;
+    --input-border: #E0E0E0;
+    --error-red: #DC3545;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: auto;
+    padding: 20px;
+}
+
+.screen-container {
+    background-color: var(--dark-bg);
+    width: 100%;
+    max-width: 90vw;
+    min-height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.header {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 30px 25px 25px;
+    text-align: center;
+    position: relative;
+    transition: padding 0.3s ease;
+}
+
+.header-title {
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.header-subtitle {
+    font-size: clamp(12px, 3vw, 14px);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.back-arrow-circle {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-orange);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.content-area {
+    background-color: var(--white);
+    flex-grow: 1;
+    padding: 30px 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    position: relative;
+    margin-top: -25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    transition: padding 0.3s ease;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: clamp(12px, 3vw, 14px);
+    color: var(--medium-grey-text);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: var(--light-grey-bg);
+    border-radius: 8px;
+    font-size: clamp(14px, 4vw, 16px);
+    color: var(--dark-grey-text);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder,
+.input-group select:invalid {
+    color: var(--medium-grey-text);
+}
+
+.input-group select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><polygon fill="%23666666" points="0,0 12,0 6,12"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    box-shadow: 0 0 0 2px var(--primary-orange);
+}
+
+.input-error {
+    border: 1px solid var(--error-red) !important;
+}
+
+.error-message {
+    color: var(--error-red);
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.primary-button {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    padding: clamp(12px, 4vw, 15px) clamp(15px, 5vw, 20px);
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(16px, 4vw, 18px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.primary-button:hover {
+    background-color: #e65c00;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.split-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.split-inputs .input-half {
+    flex: 1;
+}
+
+/* Media Queries */
+@media (max-width: 576px) {
+    .screen-container {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    .header {
+        padding: 20px 15px;
+    }
+    .content-area {
+        padding: 15px;
+    }
+    .split-inputs {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .screen-container {
+        max-width: 600px;
+    }
+    .header-title {
+        font-size: 26px;
+    }
+    .split-inputs {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .screen-container {
+        max-width: 700px;
+    }
+    .content-area {
+        padding: 50px 40px;
+    }
+}
+/* Estilo para os links (botões) na página de endereços */
+.content-area .menu-item {
+    display: block;
+    text-align: center;
+    background-color: var(--primary-orange);
+    color: var(--white);
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: clamp(16px, 4vw, 18px);
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-area .menu-item:hover {
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
+
+.content-area .menu-item:active {
+    transform: translateY(0);
+}
+
+/* Ajuste de espaçamento interno e externo */
+.content-area {
+    gap: 30px; /* Aumentar o espaçamento entre os itens */
+    align-items: center; /* Centralizar os itens */
+}
+
+/* Melhor responsividade */
+@media (max-width: 576px) {
+    .content-area .menu-item {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+@media (min-width: 769px) {
+    .content-area .menu-item {
+        max-width: 400px; /* Limitar a largura dos botões em telas maiores */
+        margin: 0 auto; /* Centralizar os botões */
+    }
+}
+/* Estilo para o botão de voltar (back-arrow-circle) */
+.back-arrow-circle {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: var(--primary-orange);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-arrow-circle:hover {
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
+
+.back-arrow-circle:active {
+    transform: translateY(0);
+}

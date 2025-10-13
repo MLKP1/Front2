@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Sabor Italiano</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="assets/images/logo.webp" alt="Logotipo Pizzaria" class="logo-img">
+            <div class="logo">Pizzaria Sabor Italiano</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" style="font-weight: bold;">Home</a></li>
+                <li><a href="Cardapio.html">Cardápio</a></li>
+                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>   
+                <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Descubra o Verdadeiro Sabor Italiano</h1>
+        <p>Pizzas artesanais feitas com ingredientes frescos e amor!</p>
+        <a href="Cardapio.html" class="btn">Ver Cardápio</a>
+    </section>
+
+    <footer>
+        <p>Pizzaria Sabor Italiano &copy; 2025</p>
+        <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
+    </footer>
+
+    <script>
+        // Efeito de transparência no header ao rolar
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

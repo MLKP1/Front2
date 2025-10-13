@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre na sua conta Pizza Stars para fazer pedidos e gerenciar suas informações.">
+  <title>Pizza Stars - Entrar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/autenticacao/entrar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <main>
+    <h1 class="titulo" tabindex="0">Entrar</h1>
+    <p class="sub">Por favor entre com sua conta existente</p>
+    <div class="container">
+      <form onsubmit="entrar(event)" role="form" aria-label="Formulário de Login">
+        <div class="email">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="email@gmail.com" autocomplete="email" autofocus required aria-required="true">
+        </div>
+        <div class="senha">
+          <label for="senha">Senha</label>
+          <div class="senha-area">
+            <input type="password" id="senha" placeholder="••••••••" minlength="6" autocomplete="current-password" required aria-required="true">
+            <button type="button" class="olho" id="olho" onclick="mudarVisibilidadeSenha()" aria-label="Mostrar ou ocultar senha">
+              <i class="fa-regular fa-eye" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" id="btn-entrar">Entrar</button>
+      </form>
+      <div class="registrar">
+        Não tem uma conta? <a href="../usuarios/cadastro.html">registre-se</a>
+      </div>
+      <div class="esqueci-senha">
+        Não sabe a senha? <a href="recuperar.html">alterar senha</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../../js/entrar.js"></script>
+</body>
+</html>

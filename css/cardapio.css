@@ -1,0 +1,310 @@
+/* Variáveis CSS para facilitar a manutenção das cores */
+:root {
+    --primary-color: #e44d26; /* Laranja/Vermelho para destaque */
+    --secondary-color: #333; /* Texto escuro */
+    --background-light: #f8f8f8; /* Fundo claro */
+    --background-dark: #eee; /* Fundo de seção/card um pouco mais escuro */
+    --text-light: #fff; /* Texto claro */
+    --border-color: #ddd; /* Cor da borda */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+/* Header - Barra superior */
+header {
+    background-color: rgb(165, 24, 24);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    max-width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
+
+nav ul li .nav-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li .login-btn, nav ul li .cadastro-btn {
+    background-color: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+}
+
+nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
+    background-color: #ffd700;
+    color: #a31818;
+    transform: translateY(-2px);
+}
+
+/* Conteúdo do Menu */
+.menu-content {
+    padding: 20px;
+}
+
+.menu-content h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block; /* Para o underline ficar apenas no texto */
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.category {
+    margin-bottom: 40px;
+    display: grid;
+    gap: 30px;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
+}
+
+.menu-item {
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.item-img {
+    width: 100%;
+    height: 180px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    display: block; /* Remove espaço extra abaixo da imagem */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.item-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que o info ocupe o espaço restante */
+}
+
+.item-info h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.item-info .description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Permite que a descrição ocupe o espaço restante */
+}
+
+.price-add {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px; /* Espaçamento acima do preço e botão */
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 25px; /* Botão arredondado */
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c93d1f; /* Cor um pouco mais escura ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+/* Estilo específico para a seção de pizzas doces */
+.category.pizzas-doces {
+    background-color: #fff5f8; /* Fundo suave com tom rosado */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ffd1dc; /* Borda suave */
+    display: grid; /* Garante o layout de grade */
+    gap: 25px; /* Espaçamento entre os itens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Mesmo layout das salgadas */
+}
+
+/* Estilo para o título das seções */
+.section-title {
+    text-align: center; /* Centraliza o texto */
+    font-size: 2rem; /* Tamanho da fonte */
+    color: var(--primary-color); /* Cor de destaque */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    text-transform: uppercase; /* Texto em letras maiúsculas */
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 600px) {
+    header {
+        padding: 0.3rem 0.2rem;
+        gap: 0.1rem;
+    }
+    .logo-container {
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0.2rem 0;
+    }
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+    header .logo {
+        font-size: 1rem;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0.2rem 0 0 0;
+    }
+@media (max-width: 480px) {
+    header {
+        padding: 0.3rem 0.2rem;
+    }
+    .logo-img {
+        width: 38px;
+        height: 38px;
+    }
+    header .logo {
+        font-size: 1.1rem;
+    }
+}
+
+
+    .menu-content h2 {
+        font-size: 1.5rem;
+        padding-bottom: 6px;
+    }
+
+    .category {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .item-img {
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-content {
+        padding: 7px;
+    }
+
+    .menu-content h2 {
+        font-size: 1.1rem;
+        padding-bottom: 3px;
+    }
+
+    .menu-item {
+        border-radius: 6px;
+        box-shadow: none;
+    }
+
+    .item-img {
+        height: 90px;
+    }
+
+    .item-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .price {
+        font-size: 1rem;
+    }
+
+    .add-to-cart-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}

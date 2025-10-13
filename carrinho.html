@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Sabor Italiano - Carrinho</title>
+    <link rel="stylesheet" href="css/carrinho.css   ">
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="assets/images/logo.webp" alt="Logotipo Pizzaria" class="logo-img">
+            <div class="logo">Pizzaria Sabor Italiano</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Cardapio.html">Cardápio</a></li>
+                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li><a href="carrinho.html" style="font-weight: bold;">Carrinho</a></li>
+                <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <main>
+        <h2 class="section-title">Carrinho de Compras</h2>
+        <div id="cart-items"></div>
+        <p id="cart-empty" style="display: none; text-align: center; color: var(--secondary-color);">Seu carrinho está vazio.</p>
+        <p id="cart-total">Total: R$ 0.00</p>
+        <button id="clear-cart-btn">Limpar Carrinho</button>
+        <button id="checkout-btn">Concluir Pagamento</button>
+
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3>Concluir Pagamento</h3>
+                <p>Use o QR Code abaixo para realizar o pagamento via Pix.</p>
+                <div id="pix-qr-code">
+                    <img src="assets/images/qrcode.png" alt="QR Code para pagamento via Pix">
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>Pizzaria Sabor Italiano © 2025</p>
+        <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
+    </footer>
+
+    <script src="js/carrinho.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5; /* Light grey background similar to the image */
+}
+
+.container {
+    background-color: #ff6600; /* Orange color for the main background */
+    width: 375px; /* Typical mobile width */
+    height: 667px; /* Typical mobile height */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px; /* Padding inside the orange container */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    width: 100%; /* Take full width of the padded container */
+    max-width: 320px; /* Limit content width for better readability */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-code {
+    font-size: 5rem; /* Large font size for "404" */
+    font-weight: bold;
+    color: #363636; /* Dark grey similar to the header in the previous image */
+    margin-bottom: 20px;
+}
+
+.message-title {
+    font-size: 1.5rem; /* For "Página não encontrada" */
+    font-weight: bold;
+    color: #363636;
+    margin-bottom: 15px;
+}
+
+.message-text {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    padding: 0 10px; /* Slightly reduce width for text */
+}
+
+.back-button {
+    background-color: #ff6600; /* Orange button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Make button full width of its parent */
+    max-width: 250px; /* Limit button width */
+}
+
+.back-button:hover {
+    background-color: #e65c00; /* Darker orange on hover */
+}
