@@ -1,45 +1,70 @@
-// Load personal info when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    loadPersonalInfo();
-    
-    // Add event listeners for buttons
-    document.querySelector('.botao.alterar-senha').addEventListener('click', changePassword);
-    document.querySelector('.botao.excluir-conta').addEventListener('click', deleteAccount);
+document.addEventListener('DOMContentLoaded', () => {
+  const alterarBtn = document.getElementById('alterar-senha');
+  const excluirBtn = document.getElementById('excluir-conta');
+
+  // Populate profile fields from localStorage
+  const profileNameEl = document.querySelector('.profile-name');
+  const infoValues = Array.from(document.querySelectorAll('.info-fields .value'));
+  const storedName = localStorage.getItem('userName');
+  const storedEmail = localStorage.getItem('userEmail');
+
+  if (storedName) {
+    if (profileNameEl) profileNameEl.textContent = storedName;
+    if (infoValues[0]) infoValues[0].textContent = storedName;
+  } else {
+    if (profileNameEl) profileNameEl.textContent = 'Meu Perfil';
+  }
+
+  if (storedEmail && infoValues[1]) {
+    infoValues[1].textContent = storedEmail;
+  }
+
+  if (alterarBtn) {
+    alterarBtn.addEventListener('click', (e) => {
+      // allow default anchor navigation if it's an <a>, otherwise navigate
+      if (alterarBtn.tagName.toLowerCase() === 'a') return;
+      e.preventDefault();
+      window.location.href = '../../login/nao_terminadas/nova_senha.html';
+    });
+  }
+
+  if (excluirBtn) {
+    excluirBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const ok = confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível.');
+      if (!ok) return;
+
+      const apiHref = excluirBtn.getAttribute('data-href');
+
+      // If data-href points to an API endpoint, call it; otherwise just clear local storage
+      if (apiHref && apiHref !== '#') {
+        try {
+          const token = localStorage.getItem('token');
+          const res = await fetch(apiHref, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token ? `Bearer ${token}` : ''
+            }
+          });
+
+          if (!res.ok) {
+            const data = await res.json().catch(() => null);
+            alert(data?.message || 'Erro ao excluir conta.');
+            return;
+          }
+        } catch (err) {
+          alert('Erro de rede. Verifique sua conexão.');
+          return;
+        }
+      }
+
+      // Clear local session data and redirect to home
+      localStorage.removeItem('token');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      alert('Conta excluída / sessão encerrada.');
+      window.location.href = '/Front2';
+    });
+  }
 });
-
-// Function to load personal information from localStorage
-function loadPersonalInfo() {
-    // Mock user data from localStorage (replace with actual data source)
-    const user = JSON.parse(localStorage.getItem('user')) || {
-        fullName: 'Neymar Junior',
-        email: 'neymar@example.com'
-    };
-
-    // Update the DOM with user data
-    document.querySelector('.nome-completo').textContent = user.fullName;
-    document.querySelector('.email').textContent = user.email;
-    document.querySelector('.nome-principal').textContent = user.fullName;
-}
-
-// Function to handle back navigation
-function goBack() {
-    window.history.back();
-}
-
-// Function to handle password change (placeholder)
-function changePassword() {
-    // Placeholder: In a real app, this would open a form or modal to change the password
-    alert('Funcionalidade de alteração de senha ainda não implementada. Entre em contato com o suporte.');
-    // Example: Could redirect to a password change page
-    // window.location.href = 'alterar_senha.html';
-}
-
-// Function to handle account deletion (placeholder)
-function deleteAccount() {
-    // Placeholder: In a real app, this would confirm and call a backend API to delete the account
-    if (confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.')) {
-        localStorage.removeItem('user'); // Clear user data (mock)
-        alert('Conta excluída com sucesso. Você será redirecionado.');
-        window.location.href = 'login.html'; // Redirect to login or home page
-    }
-}
