@@ -18,12 +18,12 @@
         <div class="card">
             <h2>Código</h2>
             <div class="code-inputs">
-                <input type="text" maxlength="1" class="code-input" value="0">
-                <input type="text" maxlength="1" class="code-input" value="0">
-                <input type="text" maxlength="1" class="code-input" value="0">
-                <input type="text" maxlength="1" class="code-input" value="0">
-                <input type="text" maxlength="1" class="code-input" value="0">
-                <input type="text" maxlength="1" class="code-input" value="0">
+                <input type="text" maxlength="1" class="code-input">
+                <input type="text" maxlength="1" class="code-input">
+                <input type="text" maxlength="1" class="code-input">
+                <input type="text" maxlength="1" class="code-input">
+                <input type="text" maxlength="1" class="code-input">
+                <input type="text" maxlength="1" class="code-input">
             </div>
             <p class="resend-timer">Para pedir um novo código espere <span class="timer">50s</span></p>
 
@@ -34,5 +34,81 @@
             </a>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputs = Array.from(document.querySelectorAll('.code-input'));
+
+        // Set attributes for numeric input and clear any prefilled value
+        inputs.forEach((inp, idx) => {
+            inp.inputMode = 'numeric';
+            inp.autocomplete = 'one-time-code';
+            inp.value = '';
+
+            inp.addEventListener('input', (e) => {
+                let v = e.target.value.replace(/\D/g, ''); // only digits
+                if (!v) {
+                    e.target.value = '';
+                    return;
+                }
+                // If user pasted multiple chars, take last and distribute
+                if (v.length > 1) {
+                    // distribute over inputs starting from current
+                    const chars = v.split('');
+                    for (let i = 0; i < chars.length && idx + i < inputs.length; i++) {
+                        inputs[idx + i].value = chars[i];
+                    }
+                    const next = Math.min(inputs.length - 1, idx + v.length);
+                    inputs[next].focus();
+                    inputs[next].select();
+                    return;
+                }
+
+                // single digit
+                e.target.value = v;
+                // move to next input if exists
+                const next = inputs[idx + 1];
+                if (next && v.length === 1) {
+                    next.focus();
+                    next.select();
+                }
+            });
+
+            inp.addEventListener('keydown', (e) => {
+                const key = e.key;
+                if (key === 'Backspace') {
+                    if (inp.value === '') {
+                        const prev = inputs[idx - 1];
+                        if (prev) {
+                            prev.focus();
+                            prev.value = '';
+                        }
+                    }
+                } else if (key === 'ArrowLeft') {
+                    const prev = inputs[idx - 1];
+                    if (prev) prev.focus();
+                } else if (key === 'ArrowRight') {
+                    const next = inputs[idx + 1];
+                    if (next) next.focus();
+                }
+            });
+
+            inp.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                const digits = paste.replace(/\D/g, '');
+                for (let i = 0; i < digits.length && idx + i < inputs.length; i++) {
+                    inputs[idx + i].value = digits[i];
+                }
+                const nextIndex = Math.min(inputs.length - 1, idx + digits.length);
+                inputs[nextIndex].focus();
+            });
+        });
+
+        // auto-focus first input
+        if (inputs.length) {
+            inputs[0].focus();
+        }
+    });
+    </script>
 </body>
 </html>
