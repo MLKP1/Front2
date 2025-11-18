@@ -1,4 +1,4 @@
-/* Variáveis CSS para facilitar a manutenção das cores */
+/* ...existing code... */
 :root {
     --primary-color: #e44d26; /* Laranja/Vermelho para destaque */
     --secondary-color: #333; /* Texto escuro */
@@ -23,6 +23,17 @@ body {
     color: var(--secondary-color);
     line-height: 1.6;
     padding-bottom: 120px; /* espaço para o footer fixo evitar sobreposição */
+}
+
+/* botão de menu mobile */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
 }
 
 /* Header - Barra superior */
@@ -226,7 +237,23 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 }
 
 /* Responsividade aprimorada */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav ul { display: none; }
+    nav.open ul {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgb(165, 24, 24);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem 1rem;
+        align-items: center;
+    }
+    nav.open ul li a { padding: .5rem 1rem; width: 100%; text-align:center; }
+
     header {
         padding: 0.3rem 0.2rem;
         gap: 0.1rem;
@@ -248,38 +275,17 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
         gap: 0.5rem;
         margin: 0.2rem 0 0 0;
     }
-@media (max-width: 480px) {
-    header {
-        padding: 0.3rem 0.2rem;
-    }
-    .logo-img {
-        width: 38px;
-        height: 38px;
-    }
-    header .logo {
-        font-size: 1.1rem;
-    }
-}
 
-
-    .menu-content h2 {
-        font-size: 1.5rem;
-        padding-bottom: 6px;
-    }
-
-    .category {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .item-img {
-        height: 140px;
-    }
+    .menu-content { padding: 12px; }
+    .menu-content h2 { font-size: 1.3rem; }
+    .category { gap: 18px; grid-template-columns: 1fr; }
+    .item-img { height: 140px; }
 }
 
 @media (max-width: 480px) {
     .menu-content {
         padding: 7px;
+        padding-bottom: 140px; /* evita que o footer cubra conteúdo */
     }
 
     .menu-content h2 {
