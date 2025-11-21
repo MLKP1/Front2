@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Altere para o mesmo backend usado no cadastro
-        const response = await axios.get('https://back-mjk6.onrender.com/api/enderecos');
+        // const response = await axios.get('http://localhost:3334/api/enderecos');
+        const response = await axios.get('https://back.pizzastars.shop/api/enderecos');
         const enderecos = response.data;
 
         if (enderecos.length === 0) {

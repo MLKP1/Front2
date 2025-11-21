@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const baseUrlApi = "https://api-n47t.onrender.com"
+    const baseUrlApi = "https://api.pizzastars.shop"
     // const baseUrlApi = "http://localhost:3333"
 
     // GET PIZZAS

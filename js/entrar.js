@@ -1,4 +1,5 @@
-const baseApiUrl = 'https://back-mjk6.onrender.com/api'
+// const baseApiUrl = 'http://localhost:3334/api'
+const baseApiUrl = 'http://back.pizzatars.shop/api'
 
 const olho = document.querySelector('#olho')
 const button = document.querySelector('#btn-entrar')
