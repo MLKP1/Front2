@@ -22,7 +22,6 @@ body {
     background-color: var(--background-light);
     color: var(--secondary-color);
     line-height: 1.6;
-    padding-bottom: 120px; /* espaço para o footer fixo evitar sobreposição */
 }
 
 /* botão de menu mobile */
@@ -321,12 +320,6 @@ footer {
     color: white;
     text-align: center;
     padding: 2rem;
-    position: fixed; /* fixa o footer na tela */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
 }
 
 footer p {
