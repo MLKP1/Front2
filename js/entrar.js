@@ -38,20 +38,20 @@ async function entrar(e) {
     })
 
     localStorage.setItem('token', response.data.token)
-      // store email used to login
-      try {
-        localStorage.setItem('userEmail', email)
-        // try to store user name if backend returned it
-        const user = response.data.user || response.data
-        if (user) {
-          const name = user.name || user.username || user.fullName || user.nome
-          if (name) localStorage.setItem('userName', name)
-        }
-      } catch (err) {
-        console.warn('Could not store user info locally', err)
+    // store email used to login
+    try {
+      localStorage.setItem('userEmail', email)
+      // try to store user name if backend returned it
+      const user = response.data.user || response.data
+      if (user) {
+        const name = user.name || user.username || user.fullName || user.nome
+        if (name) localStorage.setItem('userName', name)
       }
+    } catch (err) {
+      console.warn('Could not store user info locally', err)
+    }
 
-      window.location.href = '/Front2'
+    window.location.href = '/'
   } catch (error) {
     button.disabled = false
     button.textContent = 'Entrar'
