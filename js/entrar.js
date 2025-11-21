@@ -53,10 +53,15 @@ async function entrar(e) {
 
       window.location.href = '/Front2'
   } catch (error) {
-    console.error('Erro:', error)
-    alert('Ocorreu um erro ao tentar entrar. Tente novamente.')
-
     button.disabled = false
     button.textContent = 'Entrar'
+
+    if (error.response.data.message === 'Invalid credentials.') {
+      alert('Credenciais inválidas. Tente novamente.')
+      return
+    }
+
+    console.error('Erro:', error)
+    alert('Ocorreu um erro ao tentar entrar. Tente novamente.')
   }
 }
