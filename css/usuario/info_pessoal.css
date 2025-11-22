@@ -19,6 +19,231 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: var(--light-grey-bg);
+    display: flex; /* Keep flex for potential future centering if needed, but not strictly centering now */
+    flex-direction: column; /* Ensure content flows vertically */
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    background-color: #fff;
+    width: 100%; /* Make it take full width */
+    /* Remove max-width and min-height to allow it to expand naturally */
+    /* max-width: 375px; */
+    /* min-height: 812px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Lighter shadow for a full page */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow container to grow and fill available space */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--dark-grey-text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.back-arrow {
+    color: var(--primary-orange);
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.profile-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    background-color: #fff;
+}
+
+.profile-picture-container {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-orange);
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.menu {
+    flex-grow: 1;
+    padding: 10px 20px; /* Add horizontal padding for a wider screen */
+    background-color: var(--light-grey-bg);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.menu-item:last-of-type {
+    margin-bottom: 0;
+}
+
+.menu-item .icon {
+    font-size: 24px;
+    color: var(--primary-orange);
+    margin-right: 15px;
+}
+
+.menu-item span:nth-of-type(2) {
+    flex-grow: 1;
+    font-size: 16px;
+    color: var(--medium-grey-text);
+}
+
+.menu-item .arrow {
+    font-size: 20px;
+    color: var(--medium-grey-text);
+    position: absolute;
+    right: 20px;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bottom-nav-bg);
+    padding: 15px 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: sticky; /* Keep sticky for bottom adherence */
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.bottom-nav .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--bottom-nav-icon-inactive);
+    cursor: pointer;
+}
+
+.bottom-nav .material-symbols-outlined.current-page {
+    color: var(--bottom-nav-icon-active);
+}
+
+.menu-item.last-item .icon {
+    color: #DC3545;
+}
+
+/* Optional: Max width for content on larger screens for better readability */
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px; /* Example max-width for content on desktop */
+        margin: 20px auto; /* Center the container on larger screens */
+        border-radius: 10px; /* Add some overall container rounding */
+    }
+    .header, .profile-info {
+        border-radius: 10px 10px 0 0; /* Match container rounding */
+    }
+    .bottom-nav {
+        border-radius: 0 0 10px 10px; /* Match container rounding */
+        position: relative; /* Remove sticky if not desired on desktop */
+    }
+}
+
+/* Action buttons (info_pessoal) */
+.acoes {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.acoes .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    min-width: 160px;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.acoes .btn:active { transform: translateY(1px); }
+
+.btn.primary-btn {
+    background: linear-gradient(180deg, var(--primary-orange), #e65a00);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(255,107,0,0.18);
+    border: none;
+}
+
+.btn.secondary-btn {
+    background: #fff;
+    color: var(--dark-grey-text);
+    border: 1px solid var(--border-grey);
+}
+
+.btn.danger-btn {
+    background: #fff;
+    color: #DC3545;
+    border: 2px solid rgba(220,53,69,0.15);
+}
+
+.btn.danger-btn:hover { box-shadow: 0 6px 18px rgba(220,53,69,0.08); }
+.btn.primary-btn:hover { box-shadow: 0 8px 22px rgba(255,107,0,0.22); }
+
+@media (max-width: 480px) {
+    .acoes { flex-direction: column; gap: 10px; padding: 16px; }
+    .acoes .btn { width: 100%; min-width: unset; }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --primary-orange: #FF6B00;
+    --light-grey-bg: #F5F5F5;
+    --dark-grey-text: #333333;
+    --medium-grey-text: #666666;
+    --border-grey: #EEEEEE;
+    --bottom-nav-bg: #333333;
+    --bottom-nav-icon-inactive: #999999;
+    --bottom-nav-icon-active: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--primary-orange);
     display: flex;
     justify-content: center;

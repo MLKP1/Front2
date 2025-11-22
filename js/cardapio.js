@@ -80,8 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
+// *** sempre um dos dois deve ficar comentado
+// para rodar local
+/* document.cookie = "auth=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyeXBsMTFxeXI5aXhzeGp5YXBobXYxMnYiLCJyZXN0YXVyYW50SWQiOiJjYTA4N3V6bnZrYnE4czdxZXl0a2ZqOXoifQ.zeOKet7IYWC-662cFO2uG0Vlqp5zCpDMauR0DYPRCmU; Max-Age=2592000; Path=/; Domain=localhost"; */
+
+// para rodar em prod
+document.cookie = 'auth=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3bDV6OWZvOWRvdnc5Z2l3bDlpeGhkbXIiLCJyZXN0YXVyYW50SWQiOiJoeXEydThlZjVpdDlhbHR3NmgwcGN3djAifQ.9N9f4D4oXAaOMKw9OJOtfGa2Z0taVAhQXChpNz6sUes; Max-Age=2592000; Path=/; Secure; HttpOnly; Domain=api.pizzastars.shop'
+
 document.addEventListener('DOMContentLoaded', async () => {
-    const baseUrlApi = "https://api-n47t.onrender.com"
+    const baseUrlApi = "https://api.pizzastars.shop"
     // const baseUrlApi = "http://localhost:3333"
 
     // GET PIZZAS

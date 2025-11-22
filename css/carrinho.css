@@ -3,9 +3,10 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--background-light, #f5f5f5);
-    color: var(--secondary-color, #333);
+    background-color: var(--background-light);
+    color: var(--secondary-color);
     line-height: 1.6;
+    padding-bottom: 120px; /* espaço para o footer fixo evitar sobreposição */
 }
 
 /* Header */
@@ -402,4 +403,22 @@ footer {
 #confirm-payment-btn:hover {
     background-color: #d43d1a;
     transform: scale(1.05);
+}
+
+footer {
+    background-color: #2d1e0f;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: fixed; /* fixa o footer na tela */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
 }

@@ -13,13 +13,14 @@
             <img src="assets/images/logo.webp" alt="Logotipo Pizzaria" class="logo-img">
             <div class="logo">Pizzaria Sabor Italiano</div>
         </div>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
         <nav>
             <ul>
                 <li><a href="index.html" style="font-weight: bold;">Home</a></li>
                 <li><a href="Cardapio.html">Cardápio</a></li>
                 <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
                 <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
-                <li><a href="carrinho.html">Carrinho</a></li>   
+                <li><a href="carrinho.html">Carrinho</a></li>
                 <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
             </ul>
         </nav>
@@ -36,15 +37,25 @@
         <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/cardapio.js"></script>
     <script>
-        // Efeito de transparência no header ao rolar
-        window.addEventListener('scroll', () => {
+        // header scroll effect + mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
+
+            const btn = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            btn && btn.addEventListener('click', () => nav.classList.toggle('open'));
+
+            // close menu when clicking a link (mobile)
+            document.querySelectorAll('nav a').forEach(a => {
+                a.addEventListener('click', () => nav.classList.remove('open'));
+            });
         });
     </script>
 </body>

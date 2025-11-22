@@ -9,6 +9,7 @@ body {
     background-color: #f8f1e9;
     color: #2d1e0f;
     overflow-x: hidden;
+    padding-bottom: 120px; /* espaço para footer fixo em mobile */
 }
 
 /* Cabeçalho */
@@ -24,6 +25,17 @@ header {
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
+}
+
+/* botão de menu mobile */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
 }
 
 header.scrolled {
@@ -92,7 +104,7 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1513104890138-7c7496599f2e?auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -178,10 +190,25 @@ footer p {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    header {
+    .menu-toggle { display: block; }
+    nav ul { display: none; }
+    nav.open ul {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgb(165, 24, 24);
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem 1rem;
+        align-items: center;
+    }
+    nav.open ul li a { padding: .5rem 1rem; width: 100%; text-align:center; }
+
+    header {
+        flex-direction: row;
+        padding: 0.6rem 1rem;
     }
 
     .logo-container {
@@ -220,6 +247,15 @@ footer p {
 }
 
 @media (max-width: 480px) {
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+    }
+
     header .logo {
         font-size: 1.5rem;
     }
