@@ -1,4 +1,5 @@
-const baseApiUrl = 'https://back-mjk6.onrender.com/api'
+const baseApiUrl = 'https://back.pizzastars.shop/api'
+// const baseApiUrl = 'http://localhost:3334/api'
 
 const passwordInput = document.getElementById('password');
 const togglePassword = document.getElementById('toggle-password');
