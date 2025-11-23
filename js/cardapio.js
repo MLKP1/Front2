@@ -80,16 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
-// *** sempre um dos dois deve ficar comentado
-// para rodar local
-/* document.cookie = "auth=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyeXBsMTFxeXI5aXhzeGp5YXBobXYxMnYiLCJyZXN0YXVyYW50SWQiOiJjYTA4N3V6bnZrYnE4czdxZXl0a2ZqOXoifQ.zeOKet7IYWC-662cFO2uG0Vlqp5zCpDMauR0DYPRCmU; Max-Age=2592000; Path=/; Domain=localhost"; */
-
-// para rodar em prod
-document.cookie = 'auth=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3bDV6OWZvOWRvdnc5Z2l3bDlpeGhkbXIiLCJyZXN0YXVyYW50SWQiOiJoeXEydThlZjVpdDlhbHR3NmgwcGN3djAifQ.9N9f4D4oXAaOMKw9OJOtfGa2Z0taVAhQXChpNz6sUes; Max-Age=2592000; Path=/; Secure; HttpOnly; Domain=api.pizzastars.shop'
-
 document.addEventListener('DOMContentLoaded', async () => {
-    const baseUrlApi = "https://api.pizzastars.shop"
-    // const baseUrlApi = "http://localhost:3333"
+    const baseUrlApi = "https://back.pizzastars.shop/api"
+    // const baseUrlApi = "http://localhost:3334/api"
 
     // GET PIZZAS
     const pizzasSalgadas = document.getElementsByClassName('pizzas-salgadas')[0];
@@ -97,9 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let pizzas = []
     let totalPizzas = null
     try {
-        const response = await axios.get(`${baseUrlApi}/products/pizzas?active=true`, {
-            withCredentials: true,
-        })
+        const response = await axios.get(`${baseUrlApi}/pizzas`)
 
         pizzas = response.data.pizzas
         totalPizzas = response.data.meta.totalCount
@@ -140,9 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         for (let page = 1; page <= totalPizzasPages; page++) {
             try {
-                const response = await axios.get(`${baseUrlApi}/products/pizzas?active=true&pageIndex=${page}`, {
-                    withCredentials: true,
-                })
+                const response = await axios.get(`${baseUrlApi}/pizzas?pageIndex=${page}`)
                 let morePizzas = response.data.pizzas
                 if (Array.isArray(morePizzas)) {
                     pizzas = pizzas.concat(morePizzas)
@@ -177,9 +166,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let drinks = []
     let totalDrinks = null
     try {
-        const response = await axios.get(`${baseUrlApi}/products/drinks?active=true`, {
-            withCredentials: true,
-        })
+        const response = await axios.get(`${baseUrlApi}/drinks`)
 
         drinks = response.data.drinks
         totalDrinks = response.data.meta.totalCount
@@ -220,9 +207,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         for (let page = 1; page <= totalDrinksPages; page++) {
             try {
-                const response = await axios.get(`${baseUrlApi}/products/drinks?active=true&pageIndex=${page}`, {
-                    withCredentials: true,
-                })
+                const response = await axios.get(`${baseUrlApi}/drinks?pageIndex=${page}`)
                 let moreDrinks = response.data.drinks
                 if (Array.isArray(moreDrinks)) {
                     drinks = drinks.concat(moreDrinks)
