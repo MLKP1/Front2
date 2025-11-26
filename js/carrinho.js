@@ -1,3 +1,5 @@
+const baseApiUrlAWSBucketS3 = 'https://tcc-api-4279.s3.sa-east-1.amazonaws.com'
+
 // Função para carregar os itens do carrinho
 function loadCart() {
     let cart = [];
@@ -39,12 +41,15 @@ function loadCart() {
     // Adiciona cada item ao carrinho
     cart.forEach((item, index) => {
         const imageName = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        const imagePath = `assets/images/${imageName}.jpg`;
+        console.log(JSON.stringify(item))
+        // https://tcc-api-4279.s3.sa-east-1.amazonaws.com/drinks/agua-com-gas
+        const imagePath = `${baseApiUrlAWSBucketS3}/${imageName}`;
 
         const itemElement = document.createElement('div');
         itemElement.classList.add('cart-item');
+        //  onerror="this.src='assets/images/mussarela.'"
         itemElement.innerHTML = `
-            <img src="${imagePath}" alt="${item.name}" class="item-image" onerror="this.src='assets/images/mussarela.jpg'">
+            <img src="${imagePath}" alt="${item.name}" class="item-image">
             <div class="item-info">
                 <h3>${item.name} (${item.quantity}x)</h3>
                 <p class="price">R$ ${(item.price * item.quantity).toFixed(2)}</p>
