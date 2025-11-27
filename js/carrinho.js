@@ -43,7 +43,7 @@ function loadCart() {
         itemElement.classList.add('cart-item');
 
         itemElement.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='assets/images/portuguesa.jpg'">
+            <img src="${item.image}" alt="${item.name}" class="item-image">
             <div class="item-info">
                 <h3>${item.name} (${item.quantity}x)</h3>
                 <p class="price">R$ ${(item.price * item.quantity).toFixed(2)}</p>
