@@ -9,7 +9,6 @@ body {
     background-color: #f8f1e9;
     color: #2d1e0f;
     overflow-x: hidden;
-    padding-bottom: 120px; /* espaço para footer fixo em mobile */
 }
 
 /* Cabeçalho */
