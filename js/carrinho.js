@@ -1,3 +1,5 @@
+const baseApiUrlAWSBucketS3 = 'https://tcc-api-4279.s3.sa-east-1.amazonaws.com'
+
 // Função para carregar os itens do carrinho
 function loadCart() {
     let cart = [];
@@ -27,7 +29,6 @@ function loadCart() {
     if (cart.length === 0) {
         cartEmptyElement.style.display = 'block';
         cartTotalElement.textContent = `Total: R$ 0.00`;
-        console.log('Carrinho vazio, exibindo mensagem.');
         return;
     } else {
         cartEmptyElement.style.display = 'none';
@@ -38,13 +39,11 @@ function loadCart() {
 
     // Adiciona cada item ao carrinho
     cart.forEach((item, index) => {
-        const imageName = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        const imagePath = `assets/images/${imageName}.jpg`;
-
         const itemElement = document.createElement('div');
         itemElement.classList.add('cart-item');
+
         itemElement.innerHTML = `
-            <img src="${imagePath}" alt="${item.name}" class="item-image" onerror="this.src='assets/images/mussarela.jpg'">
+            <img src="${item.image}" alt="${item.name}" class="item-image">
             <div class="item-info">
                 <h3>${item.name} (${item.quantity}x)</h3>
                 <p class="price">R$ ${(item.price * item.quantity).toFixed(2)}</p>
@@ -58,7 +57,6 @@ function loadCart() {
         `;
         cartItemsElement.appendChild(itemElement);
         total += item.price * item.quantity;
-        console.log(`Item renderizado: ${item.name}, Quantidade: ${item.quantity}, Preço: ${item.price}`);
     });
 
     // Atualiza o total
@@ -68,7 +66,6 @@ function loadCart() {
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', () => {
             const index = parseInt(button.getAttribute('data-index'));
-            console.log(`Botão Excluir clicado para índice: ${index}`);
             removeCartItem(index);
         });
     });
@@ -78,7 +75,6 @@ function loadCart() {
         button.addEventListener('click', () => {
             const index = parseInt(button.getAttribute('data-index'));
             const action = button.getAttribute('data-action');
-            console.log(`Botão de quantidade clicado: índice=${index}, ação=${action}`);
             updateQuantity(index, action);
         });
     });
@@ -92,7 +88,6 @@ function loadCart() {
                 quantity = 1;
                 input.value = 1;
             }
-            console.log(`Input de quantidade alterado: índice=${index}, quantidade=${quantity}`);
             updateQuantity(index, 'set', quantity);
         });
     });
@@ -115,19 +110,15 @@ function updateQuantity(index, action, quantity = null) {
 
     if (action === 'increase') {
         cart[index].quantity = (cart[index].quantity || 1) + 1;
-        console.log(`Quantidade aumentada para ${cart[index].name}: ${cart[index].quantity}`);
     } else if (action === 'decrease') {
         if ((cart[index].quantity || 1) > 1) {
             cart[index].quantity = (cart[index].quantity || 1) - 1;
-            console.log(`Quantidade diminuída para ${cart[index].name}: ${cart[index].quantity}`);
         } else {
-            console.log(`Removendo item ${cart[index].name} (quantidade = 0)`);
             removeCartItem(index);
             return;
         }
     } else if (action === 'set' && quantity !== null && !isNaN(quantity) && quantity >= 1) {
         cart[index].quantity = quantity;
-        console.log(`Quantidade definida para ${cart[index].name}: ${quantity}`);
     } else {
         console.error('Ação ou quantidade inválida:', { action, quantity });
         return;
@@ -147,7 +138,6 @@ function removeCartItem(index) {
     try {
         cart = JSON.parse(localStorage.getItem('cart')) || [];
         if (index >= 0 && index < cart.length) {
-            console.log(`Removendo item no índice ${index}: ${cart[index].name}`);
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             loadCart();
@@ -162,7 +152,6 @@ function removeCartItem(index) {
 // Função para limpar o carrinho
 function clearCart() {
     try {
-        console.log('Limpando o carrinho');
         localStorage.removeItem('cart');
         loadCart();
     } catch (error) {
@@ -175,11 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     if (clearCartBtn) {
         clearCartBtn.addEventListener('dblclick', () => {
-            console.log('Botão Limpar Carrinho clicado');
             clearCart();
         });
     }
-    console.log('Carregando carrinho na inicialização');
     loadCart();
 });
 
@@ -206,14 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
-            console.log('Abrindo modal de pagamento');
             openModal();
         });
     }
 
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', () => {
-            console.log('Fechando modal de pagamento');
             closeModal();
         });
     }
@@ -223,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
-                console.log('Fechando modal ao clicar fora do conteúdo');
                 closeModal();
             }
         });
