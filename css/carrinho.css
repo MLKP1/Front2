@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilo geral do corpo */
 body {
     font-family: 'Arial', sans-serif;
@@ -6,7 +12,6 @@ body {
     background-color: var(--background-light);
     color: var(--secondary-color);
     line-height: 1.6;
-    padding-bottom: 120px; /* espaço para o footer fixo evitar sobreposição */
 }
 
 /* Header */
@@ -20,10 +25,7 @@ header {
     align-items: center;
     position: sticky;
     width: 100%;
-    max-width: 100vw;
-    left: 0;
     top: 0;
-    z-index: 1000;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
 }
@@ -409,13 +411,7 @@ footer {
     background-color: #2d1e0f;
     color: white;
     text-align: center;
-    padding: 2rem;
-    position: fixed; /* fixa o footer na tela */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+    padding: 2rem 0;
 }
 
 footer p {
