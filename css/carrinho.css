@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilo geral do corpo */
 body {
     font-family: 'Arial', sans-serif;
