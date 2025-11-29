@@ -27,14 +27,101 @@
     </header>
 
     <section class="hero" id="home">
-        <h1>Descubra o Verdadeiro Sabor Italiano</h1>
-        <p>Pizzas artesanais feitas com ingredientes frescos e amor!</p>
-        <a href="Cardapio.html" class="btn">Ver Cardápio</a>
+        <div class="hero-content">
+            <h1>Descubra o Verdadeiro Sabor Italiano</h1>
+            <p>Pizzas artesanais feitas com ingredientes frescos e amor pela tradição italiana!</p>
+            <div class="hero-buttons">
+                <a href="Cardapio.html" class="btn btn-primary">Ver Cardápio</a>
+                <a href="#sobre" class="btn btn-secondary">Conheça Mais</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="feature-card">
+                <div class="feature-icon">🍕</div>
+                <h3>Ingredientes Premium</h3>
+                <p>Selecionamos apenas os melhores ingredientes para garantir sabor incomparável</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Forno à Lenha</h3>
+                <p>Pizzas assadas no tradicional forno à lenha com temperatura perfeita</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Entrega Rápida</h3>
+                <p>Entregamos sua pizza quentinha e no prazo em toda a região</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h2>Sobre Nós</h2>
+                    <p class="sobre-subtitle">Tradição italiana autêntica desde 2010</p>
+                    <p>Na Pizza Stars, mantemos viva a tradição da culinária italiana, trazendo para você o verdadeiro sabor das pizzas artesanais. Nossa receita é passada de geração em geração, garantindo qualidade e sabor incomparáveis.</p>
+                    <p>Cada pizza é cuidadosamente preparada com ingredientes frescos, selecionados especialmente para proporcionar uma experiência gastronômica única. Venha descobrir o que torna nossa pizza especial!</p>
+                    <a href="Cardapio.html" class="btn btn-primary">Explorar Menu</a>
+                </div>
+                <div class="sobre-image">
+                    <img src="assets/images/pizza-sobre.jpg" height="100%" width="100%" alt="Pizza">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="depoimento-texto">"Melhor pizza da cidade! Ingredientes frescos e sabor inacreditável. Já virou tradição na minha família!"</p>
+                    <p class="depoimento-autor">- Maria Silva</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="depoimento-texto">"Entrega rápida e pizza sempre quentinha! O sabor do forno à lenha faz toda a diferença."</p>
+                    <p class="depoimento-autor">- João Santos</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="depoimento-texto">"Ambiente acolhedor e atendimento impecável. A pizza portuguesa é simplesmente perfeita!"</p>
+                    <p class="depoimento-autor">- Ana Costa</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <p>Pizza Stars &copy; 2025</p>
-        <p>Contato: (11) 1234-5678 | contato@saboritaliano.com</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pizza Stars</h3>
+                <p>Tradição italiana autêntica desde 2010. Sabor, qualidade e paixão em cada fatia!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>📞 (11) 1234-5678</p>
+                <p>✉️ contato@pizzastars.com</p>
+                <p>📍 Rua das Pizzas, 123 - Centro</p>
+            </div>
+            <div class="footer-section">
+                <h4>Horário de Funcionamento</h4>
+                <p>Segunda a Quinta: 18h - 00h</p>
+                <p>Sexta e Sábado: 18h - 01h</p>
+                <p>Domingo: 18h - 23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Pizza Stars &copy; 2025 - Todos os direitos reservados</p>
+        </div>
     </footer>
 
     <script>
@@ -53,6 +140,46 @@
             // close menu when clicking a link (mobile)
             document.querySelectorAll('nav a').forEach(a => {
                 a.addEventListener('click', () => nav.classList.remove('open'));
+            });
+
+            // Smooth scroll para links âncora
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Intersection Observer para animações ao scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar elementos para animação
+            document.querySelectorAll('.feature-card, .produto-card, .depoimento-card, .sobre-content').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
             });
         });
     </script>
