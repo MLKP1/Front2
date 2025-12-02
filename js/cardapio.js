@@ -306,3 +306,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+(function(){
+    function ensureToastContainer(){
+        let c = document.querySelector('.toast-container');
+        if (!c) {
+            c = document.createElement('div');
+            c.className = 'toast-container';
+            document.body.appendChild(c);
+        }
+        return c;
+    }
+
+    function showToast(message, type = 'success', timeout = 2500){
+        const container = ensureToastContainer();
+        const t = document.createElement('div');
+        t.className = `toast ${type}`;
+        t.setAttribute('role','status');
+        t.setAttribute('aria-live','polite');
+        t.textContent = message;
+        container.appendChild(t);
+        // force reflow para animar
+        requestAnimationFrame(()=> t.classList.add('show'));
+        // remover depois
+        setTimeout(()=> {
+            t.classList.remove('show');
+            t.addEventListener('transitionend', ()=> t.remove(), { once: true });
+        }, timeout);
+    }
+
+    // Se seu código já adiciona ao carrinho, chame showToast() dentro dessa função.
+    // Caso não, esta captura global de clique funciona para botões com essa classe:
+    document.addEventListener('click', function(e){
+        const btn = e.target.closest('.add-to-cart-btn');
+        if (!btn) return;
+        // Opcional: ler nome da pizza/prévia no card
+        const item = btn.closest('.menu-item');
+        const title = item ? (item.querySelector('h3')?.textContent || 'Item') : 'Item';
+        showToast(`${title} adicionada ao carrinho`);
+        // Se necessário, espere e permita que seu código continue a adicionar ao carrinho aqui.
+    }, false);
+
+})();
