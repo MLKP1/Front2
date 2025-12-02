@@ -1,140 +1,218 @@
-/* Importa a fonte 'Poppins' e define as variáveis do tema do Perfil.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-:root {
-    --primary-orange: #FF6B00;
-    --light-grey-bg: #F5F5F5;
-    --dark-grey-text: #333333;
-    --medium-grey-text: #666666;
-    --border-grey: #EEEEEE;
-    /* Adicionando cores para feedback de erro/sucesso se necessário */
-    --error-red: #DC3545;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body, main {
+    min-height: 100vh;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--light-grey-bg);
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    min-height: 100vh;
-    overflow-x: hidden;
-    padding: 20px; /* Garante espaçamento em telas muito pequenas */
-}
-
-/* Container principal (simula o layout mobile centralizado em desktop) */
-.container {
-    width: 100%;
-    max-width: 400px; /* Largura ideal para formulários */
-    padding-top: 50px; /* Espaço no topo para um visual mais leve */
-}
-
-/* O Card do formulário (Similar ao .container ou .menu-item no Perfil.css) */
-.card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-.card h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--dark-grey-text);
-    margin-bottom: 25px;
+    background-color: var(--cinza-escuro);
+    color: var(--branco);
     text-align: center;
 }
 
-/* Grupo de Input */
-.input-group {
-    margin-bottom: 20px;
+main {
+    display: flex;
+    flex-direction: column;
 }
 
-.input-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--medium-grey-text);
-    margin-bottom: 8px;
+/* Back link above title (same style as entrar) */
+.page-back {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.5rem 0;
+}
+.page-back a {
+    color: var(--branco) !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+}
+.page-back a:visited {
+    color: var(--branco) !important;
+}
+.page-back a i,
+.page-back a .fa,
+.page-back a .fa-solid,
+.page-back a .fa-regular {
+    color: var(--branco) !important;
+    fill: var(--branco) !important;
+    -webkit-text-fill-color: var(--branco) !important;
+}
+.page-back a svg {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+.page-back a svg path {
+    fill: var(--branco) !important;
+}
+.page-back a:focus { outline: 2px solid rgba(0,0,0,0.08); border-radius: 4px; }
+
+/* Header layout: back button + title block (match entrar) */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.5rem auto 1rem auto; /* center block horizontally */
+}
+.page-header .title-block {
+    display: flex;
+    flex-direction: column;
 }
 
-.input-group input[type="text"],
-.input-group input[type="email"] {
+@media (max-width: 480px) {
+    .page-header { flex-direction: row; align-items: center; }
+    .page-header .title-block .sub { font-size: 0.95rem; }
+}
+
+.page-header .titulo { margin: 0; color: var(--branco); }
+.page-header .sub { margin: 0.25rem 0 1.25rem 0; color: var(--branco); }
+
+.titulo {
+    margin: 4rem 0 1rem 0;
+}
+
+.sub {
+    margin-bottom: 3rem;
+}
+
+.container {
+    background-color: var(--branco);
+    color: var(--cinza);
+    border-radius: 20px 20px 0 0;
+    padding: 2rem;
+    flex: 1;
+}
+
+.container form {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: var(--dark-grey-text);
-    border: 1px solid var(--border-grey);
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.input-group input:focus {
-    border-color: var(--primary-orange);
+.email, .senha {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
 }
 
-/* Estilo específico para o campo de senha com ícone */
-.password-container {
+.senha .senha-area {
     position: relative;
-}
-
-.password-container input[type="password"] {
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: var(--dark-grey-text);
-    border: 1px solid var(--border-grey);
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s;
-    padding-right: 40px; /* Espaço para o ícone */
 }
 
-.password-container input:focus {
-    border-color: var(--primary-orange);
-}
-
-/* Ícone de alternância de senha */
-#toggle-password {
+.senha .senha-area .olho {
     position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--medium-grey-text);
-    cursor: pointer;
-    font-size: 18px;
-}
-
-/* Botão de Cadastro (register-button) - Similar ao botão Salvar Senha */
-.register-button {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    background-color: var(--primary-orange);
+    right: 2px;
+    padding: 6px;
     border: none;
-    border-radius: 8px;
+    background: none;
+    color: var(--cinza);
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 15px;
-    box-shadow: 0 4px 8px rgba(255, 107, 0, 0.3); /* Sombra mais forte para destaque */
+    transition: opacity 50ms, color 0.2s ease;
+    opacity: 1;
 }
 
-.register-button:hover {
-    background-color: #e65c00; /* Cor um pouco mais escura ao passar o mouse */
-    box-shadow: 0 6px 10px rgba(255, 107, 0, 0.4);
+.senha .senha-area .olho:focus {
+    color: var(--cinza-escuro);
+    outline: none;
 }
 
-.register-button:active {
-    background-color: #cc5200;
-    box-shadow: none;
+.senha .senha-area .olho:hover {
+    color: var(--laranja);
+}
+
+.senha .senha-area .olho.trocando {
+    opacity: 0;
+}
+
+
+/* Apply the same input styles to cadastro fields (#name and #password)
+     so cadastro matches the entrar page exactly */
+#email,
+#senha,
+#name,
+#password {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: var(--branco-escuro);
+    color: var(--cinza-escuro);
+    transition: border-color 0.2s ease;
+}
+
+#email:focus,
+#senha:focus,
+#name:focus,
+#password:focus {
+    border-color: var(--laranja);
+    outline: none;
+}
+
+#email:not(:focus):not(:placeholder-shown):invalid,
+#senha:not(:focus):not(:placeholder-shown):invalid,
+#name:not(:focus):not(:placeholder-shown):invalid,
+#password:not(:focus):not(:placeholder-shown):invalid {
+    border: 2px solid var(--perigo);
+}
+
+#email:not(:focus):not(:placeholder-shown):valid,
+#senha:not(:focus):not(:placeholder-shown):valid,
+#name:not(:focus):not(:placeholder-shown):valid,
+#password:not(:focus):not(:placeholder-shown):valid {
+    border: 2px solid var(--sucesso);
+}
+
+#senha {
+    padding-right: 2rem;
+}
+
+label {
+    font-weight: 600;
+    color: var(--cinza-escuro);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--laranja);
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--laranja-claro);
+}
+
+button[type="submit"]:focus {
+    outline: none;
+    background-color: var(--laranja-claro);
+}
+
+.registrar a, .esqueci-senha a {
+    color: var(--laranja);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.registrar a:focus, .esqueci-senha a:focus {
+    outline: none;
+    text-decoration: underline;
+}
+
+.registrar {
+    margin-bottom: 5px;
 }

@@ -59,12 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Clear local session data and redirect to home
+      // Clear local session data and redirect to home (index)
       localStorage.removeItem('token');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('userName');
       alert('Conta excluída / sessão encerrada.');
-      window.location.href = '/Front2';
+      // redirect to project's index.html relative to this page
+      window.location.href = '../../index.html';
     });
   }
 });

@@ -12,6 +12,60 @@ main {
   display: flex;
   flex-direction: column;
 }
+/* Back link above title */
+.page-back {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.5rem 0;
+}
+.page-back a {
+  color: var(--branco) !important;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+}
+.page-back a:visited {
+  color: var(--branco) !important;
+}
+.page-back a i,
+.page-back a .fa,
+.page-back a .fa-solid,
+.page-back a .fa-regular {
+  color: var(--branco) !important;
+  fill: var(--branco) !important;
+  -webkit-text-fill-color: var(--branco) !important;
+}
+.page-back a svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+.page-back a svg path {
+  fill: var(--branco) !important;
+}
+.page-back a:focus { outline: 2px solid rgba(255,255,255,0.12); border-radius: 4px; }
+
+/* Header layout: back button + title block */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2.5rem auto 1rem auto; /* center block horizontally */
+}
+.page-header .title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header .titulo { margin: 0; color: var(--branco); }
+.page-header .sub { margin: 0.25rem 0 1.25rem 0; color: var(--branco); }
+
+/* When screen is narrow, stack vertically */
+@media (max-width: 480px) {
+  .page-header { flex-direction: row; align-items: center; }
+  .page-header .title-block .sub { font-size: 0.95rem; }
+}
 
 .titulo {
   margin: 4rem 0 1rem 0;
