@@ -3,13 +3,20 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
+    }
+
+    :root {
+        --footer-height: 96px;
+    }
+    /* Default expanded size when showing the footer (can be overridden by JS) */
+    :root { --footer-expanded: 360px; }
 
 body {
     background-color: #fff;
     color: #2d1e0f;
     overflow-x: hidden;
     line-height: 1.6;
+    padding-bottom: calc(var(--footer-expanded, var(--footer-height)) + 16px);
 }
 
 .container {
@@ -358,19 +365,25 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 
 /* Rodapé */
 footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
     background: linear-gradient(135deg, #2d1e0f 0%, #1a1209 100%);
     color: white;
-    padding: 4rem 0 2rem;
+    padding: 0; /* inner content has own padding */
+    min-height: var(--footer-height);
+    box-sizing: border-box;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 16px 2rem 8px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
 }
 
 .footer-section h3 {
@@ -394,9 +407,10 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 2rem;
+    padding: 8px 0 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #999;
+    background: transparent;
 }
 
 /* Animações */
@@ -599,3 +613,25 @@ footer {
         padding: 3rem 0;
     }
 }
+
+/* Ajuste do footer para telas pequenas */
+@media (max-width: 768px) {
+    :root { --footer-height: 140px; }
+}
+
+/* Footer show/hide states */
+footer.footer-hidden {
+    transform: translateY(110%);
+    transition: transform 260ms cubic-bezier(.22,.77,.25,1);
+    pointer-events: none;
+    opacity: 0;
+}
+footer.footer-visible {
+    transform: translateY(0);
+    transition: transform 260ms cubic-bezier(.22,.77,.25,1);
+    pointer-events: auto;
+    opacity: 1;
+}
+footer.footer-visible { max-height: var(--footer-expanded, 360px); overflow-y: auto; }
+
+footer.footer-hidden * { outline: none; }

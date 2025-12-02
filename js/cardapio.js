@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // GET PIZZAS
     const pizzasSalgadas = document.getElementsByClassName('pizzas-salgadas')[0];
+    const pizzasDoces = document.getElementsByClassName('pizzas-doces')[0];
 
     let pizzas = []
     let totalPizzas = null
@@ -53,14 +54,40 @@ document.addEventListener('DOMContentLoaded', async () => {
         totalPizzas = response.data.meta.totalCount
 
         pizzasSalgadas.removeChild(pizzasSalgadas.firstChild);
+        pizzasDoces.removeChild(pizzasDoces.firstChild);
 
-        if (!pizzas) {
+        if (!pizzas || pizzas.length === 0) {
             pizzasSalgadas.innerHTML = '<p>Nenhuma pizza cadastrada.</p>';
+            pizzasDoces.innerHTML = '<p>Nenhuma pizza cadastrada.</p>';
             return;
         }
 
         pizzasSalgadas.innerHTML = '';
+        pizzasDoces.innerHTML = '';
         // console.log(pizzas);
+
+        // Separa as pizzas entre salgadas e doces (quando possível)
+        // helper disponível para uso em várias partes do fluxo
+        function isSweetPizza(pizza) {
+            try {
+                const name = (pizza.name || '').toLowerCase();
+                const category = (pizza.category || pizza.type || '').toLowerCase();
+                if (pizza.isSweet === true || pizza.sweet === true) return true;
+                if (category && category.includes('doce')) return true;
+                if (name && (name.includes('doce') || name.includes('sobremesa') || name.includes('chocolate') || name.includes('nutella') )) return true;
+                if (Array.isArray(pizza.tags) && pizza.tags.join(',').toLowerCase().includes('doce')) return true;
+            } catch (err) {
+                // ignore
+            }
+            return false;
+        }
+
+        // Antes de renderizar, ordene as pizzas para garantir que as salgadas venham primeiro
+        pizzas.sort((a, b) => {
+            const aSweet = isSweetPizza(a) ? 1 : 0;
+            const bSweet = isSweetPizza(b) ? 1 : 0;
+            return aSweet - bSweet; // salgadas (0) antes das doces (1)
+        });
 
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div');
@@ -83,11 +110,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `;
-            pizzasSalgadas.appendChild(pizzaElement);
+            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
+            target.appendChild(pizzaElement);
         });
     } catch (error) {
         console.error('Erro ao carregar as pizzas:', error);
         pizzasSalgadas.innerHTML = '<p>Erro ao carregar as pizzas. Tente novamente mais tarde.</p>';
+        pizzasDoces.innerHTML = '<p>Erro ao carregar as pizzas. Tente novamente mais tarde.</p>';
         return;
     }
 
@@ -107,6 +136,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         pizzasSalgadas.innerHTML = ''
+        pizzasDoces.innerHTML = ''
+        // Garantir que as salgadas fiquem antes das doces também após concatenar todas as páginas
+        pizzas.sort((a, b) => {
+            const aSweet = isSweetPizza(a) ? 1 : 0;
+            const bSweet = isSweetPizza(b) ? 1 : 0;
+            return aSweet - bSweet;
+        });
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div')
             pizzaElement.classList.add('menu-item')
@@ -127,7 +163,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `;
-            pizzasSalgadas.appendChild(pizzaElement)
+            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
+            target.appendChild(pizzaElement)
         })
     }
 
@@ -217,5 +254,52 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
             drinksContainer.appendChild(drinkElement)
         })
+    }
+});
+
+// Highlight category nav items based on scroll and enable smooth scrolling
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.category-nav .nav-cat');
+    const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    // Add click smooth scroll and set active class
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = link.getAttribute('href');
+            const target = document.querySelector(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // update active
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // IntersectionObserver to detect section on screen and set active link
+    if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                    const id = `#${entry.target.id}`;
+                    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+                }
+            });
+        }, { root: null, threshold: [0.5] });
+
+        sections.forEach(s => obs.observe(s));
+    } else {
+        // fallback: on scroll, calculate nearest
+        window.addEventListener('scroll', () => {
+            let current = sections[0];
+            sections.forEach(s => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= window.innerHeight/3 && rect.bottom >= window.innerHeight/4) current = s;
+            });
+            if (current && current.id) {
+                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${current.id}`));
+            }
+        });
     }
 });

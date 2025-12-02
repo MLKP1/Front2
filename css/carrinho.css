@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+:root {
+    --footer-height: 96px; /* default footer height; adjust to your needs */
+}
+/* Default maximum visible height for footer when expanded - updated by JS at runtime */
+:root { --footer-expanded: 360px; }
+
 /* Estilo geral do corpo */
 body {
     font-family: 'Arial', sans-serif;
@@ -93,6 +99,7 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 /* Conteúdo principal */
 main {
     padding: 20px;
+    padding-bottom: calc(var(--footer-expanded, var(--footer-height)) + 20px); /* evita que o conteúdo fique coberto pelo footer fixo */
     margin-top: auto; /* Espaço para compensar o header fixo */
 }
 
@@ -307,8 +314,8 @@ h2.section-title {
 }
 
 /* Footer */
+/* Basic footer reset (overridden by specific dark theme below) */
 footer {
-    background-color: var(--background-dark, #fff);
     color: var(--secondary-color, #333);
     text-align: center;
     padding: 10px 0;
@@ -408,13 +415,84 @@ footer {
 }
 
 footer {
-    background-color: #2d1e0f;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: linear-gradient(135deg, #2d1e0f 0%, #1a1209 100%);
     color: white;
-    text-align: center;
-    padding: 2rem 0;
+    padding: 0; /* inner content has own padding */
+    min-height: var(--footer-height);
+    box-sizing: border-box;
 }
 
 footer p {
     margin: 0.5rem 0;
     font-size: 1rem;
 }
+
+/* Footer layout to match the home page */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 2rem 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.footer-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.footer-section p {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 8px 0 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem 0; }
+}
+
+/* Adjust footer height for very small screens */
+@media (max-width: 480px) {
+    :root { --footer-height: 140px; }
+}
+
+/* Footer show/hide states */
+footer.footer-hidden {
+    transform: translateY(110%);
+    transition: transform 260ms cubic-bezier(.22,.77,.25,1);
+    pointer-events: none;
+    opacity: 0;
+}
+footer.footer-visible {
+    transform: translateY(0);
+    transition: transform 260ms cubic-bezier(.22,.77,.25,1);
+    pointer-events: auto;
+    opacity: 1;
+}
+footer.footer-visible { max-height: var(--footer-expanded, 360px); overflow-y: auto; }
+
+/* keep layout accessible (keyboard focus) when visible */
+footer.footer-hidden * { outline: none; }
