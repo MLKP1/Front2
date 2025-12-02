@@ -393,7 +393,7 @@ footer {
     right: 0;
     bottom: 0;
     z-index: 999;
-    background: linear-gradient(135deg, #000000 0%, #000000 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1209 100%);
     color: white;
     padding: 0; /* inner content has own padding */
     min-height: var(--footer-height);
