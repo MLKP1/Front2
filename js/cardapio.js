@@ -32,6 +32,7 @@ function adicionarCarrinho(e) {
     try {
         localStorage.setItem('cart', JSON.stringify(cart));
         // alert(`${itemName} adicionado ao carrinho!`);
+        
     } catch (error) {
         console.error('Erro ao salvar o carrinho no localStorage:', error);
     }
@@ -68,19 +69,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Separa as pizzas entre salgadas e doces (quando possível)
         // helper disponível para uso em várias partes do fluxo
-        function isSweetPizza(pizza) {
-            try {
-                const name = (pizza.name || '').toLowerCase();
-                const category = (pizza.category || pizza.type || '').toLowerCase();
-                if (pizza.isSweet === true || pizza.sweet === true) return true;
-                if (category && category.includes('doce')) return true;
-                if (name && (name.includes('doce') || name.includes('sobremesa') || name.includes('chocolate') || name.includes('nutella') )) return true;
-                if (Array.isArray(pizza.tags) && pizza.tags.join(',').toLowerCase().includes('doce')) return true;
-            } catch (err) {
-                // ignore
-            }
-            return false;
+function isSweetPizza(pizza) {
+    try {
+        const name = (pizza.name || '').toLowerCase();
+        const category = (pizza.category || pizza.type || '').toLowerCase();
+        if (pizza.isSweet === true || pizza.sweet === true) return true;
+        if (category && (category.includes('doce') || category.includes('sweet') || category.includes('dessert'))) return true;
+        const sweetKeywords = ['doce', 'sobremesa', 'chocolate', 'nutella', 'brigadeiro', 'morango', 'banana', 'goiabada', 'creme de avelã', 'sorvete'];
+        for (const keyword of sweetKeywords) {
+            if (name.includes(keyword)) return true;
         }
+        if (Array.isArray(pizza.tags) && pizza.tags.join(',').toLowerCase().includes('doce')) return true;
+    } catch (err) {
+    }
+    return false;
+}
 
         // Antes de renderizar, ordene as pizzas para garantir que as salgadas venham primeiro
         pizzas.sort((a, b) => {

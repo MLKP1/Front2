@@ -124,12 +124,16 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 
 /* Category quick navigation */
 .category-nav {
+    position: fixed;
+    top: 0px;
+    left: 0; 
+    right: 0;
     display: flex;
     gap: 12px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 18px;
-    position: sticky;
+ /*   margin-bottom: 18px;
+ /*   position: sticky; */
     top: 72px; /* stays below the header */
     z-index: 998;
     background: rgba(255,255,255,0.95);
@@ -245,6 +249,35 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Aviso de Notificação (Toast/Snackbar) */
+.toast-notification {
+    position: fixed;
+    bottom: 120px; /* Posicionado acima do rodapé fixo */
+    left: 50%;
+    transform: translateX(-50%) translateY(100px); /* Inicialmente escondido abaixo */
+    background-color: #4CAF50; /* Cor verde para sucesso */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    min-width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Move para cima para aparecer */
+}
+
+@media (max-width: 768px) {
+    .toast-notification {
+        bottom: 80px; /* Ajuste para telas menores */
+    }
+}
+
 .add-to-cart-btn:hover {
     background-color: #c93d1f; /* Cor um pouco mais escura ao passar o mouse */
     transform: translateY(-2px);
@@ -264,6 +297,8 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
 
 /* Estilo para o título das seções */
 .section-title {
+    margin-top: 122px; 
+    margin-bottom: 20px;
     text-align: center; /* Centraliza o texto */
     font-size: 2rem; /* Tamanho da fonte */
     color: var(--primary-color); /* Cor de destaque */
@@ -358,7 +393,7 @@ footer {
     right: 0;
     bottom: 0;
     z-index: 999;
-    background: linear-gradient(135deg, #2d1e0f 0%, #1a1209 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1209 100%);
     color: white;
     padding: 0; /* inner content has own padding */
     min-height: var(--footer-height);
