@@ -212,4 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Botão que confirma o pagamento: limpa o carrinho e fecha o modal
+    const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
+    if (confirmPaymentBtn) {
+        confirmPaymentBtn.addEventListener('click', () => {
+            // Limpa o carrinho (usa função já existente) e fecha modal
+            clearCart();
+            closeModal();
+            // feedback ao usuário (pode ser substituído por toast/modal)
+            alert('Pagamento concluído. O carrinho foi esvaziado.');
+        });
+    }
 });
