@@ -9,7 +9,7 @@
 <body>
     <header id="header">
         <div class="logo-container">
-            <img src="assets/images/logo.webp" alt="Logotipo Pizzaria" class="logo-img">
+            <img src="assets/images/logo.svg" alt="Logotipo Pizzaria" class="logo-img">
             <div class="logo">Pizza Stars</div>
         </div>
         <button class="menu-toggle" aria-label="Abrir menu">☰</button>
@@ -17,8 +17,8 @@
             <ul>
                 <li><a href="index.html" >Home</a></li>
                 <li><a href="Cardapio.html" style="font-weight: bold;">Cardápio</a></li>
-                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
-                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li id="btn-login"><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li id="btn-cadastro"><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
                 <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
             </ul>
@@ -28,7 +28,7 @@
     <div class="menu-content">
         <!-- Quick-access category navigation -->
         <div class="category-nav" aria-label="Navegação do cardápio">
-            <a href="#pizzas-salgadas" class="nav-cat active">Pizzas Salgadas</a>
+            <a href="#pizzas-salgadas" class="nav-cat">Pizzas Salgadas</a>
             <a href="#pizzas-doces" class="nav-cat">Pizzas Doces</a>
             <a href="#bebidas" class="nav-cat">Bebidas</a>
             
@@ -58,7 +58,8 @@
             <div class="footer-section">
                 <h4>Contato</h4>
                 <p>📞 (11) 1234-5678</p>
-                <p>✉️ <a href="mailto:contato@pizzastars.shop">contato@pizzastars.shop</a></p>
+                <p>✉️ contato@pizzastars.shop</p>
+                <p>📍 Rua das Pizzas, 123 - Centro</p>
             </div>
             <div class="footer-section">
                 <h4>Horário de Funcionamento</h4>
@@ -76,6 +77,14 @@
     <script src="js/cardapio.js"></script>
     <script src="js/footer.js"></script>
     <script>
+        const logged = localStorage.getItem('token')
+        if (logged) {
+            const loginBtn = document.querySelector('#btn-login')
+            const cadastroBtn = document.querySelector('#btn-cadastro')
+            loginBtn.remove()
+            cadastroBtn.remove()
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const btn = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav');
@@ -87,10 +96,5 @@
             });
         });
     </script>
-
-    <div id="toast-message" class="toast-notification"></div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </body>
-    
 </body>
-</html>
+</html

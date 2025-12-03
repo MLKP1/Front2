@@ -249,35 +249,6 @@ nav ul li .login-btn:hover, nav ul li .cadastro-btn:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Aviso de Notificação (Toast/Snackbar) */
-.toast-notification {
-    position: fixed;
-    bottom: 120px; /* Posicionado acima do rodapé fixo */
-    left: 50%;
-    transform: translateX(-50%) translateY(100px); /* Inicialmente escondido abaixo */
-    background-color: #4CAF50; /* Cor verde para sucesso */
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    z-index: 2000;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    min-width: 250px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.toast-notification.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0); /* Move para cima para aparecer */
-}
-
-@media (max-width: 768px) {
-    .toast-notification {
-        bottom: 80px; /* Ajuste para telas menores */
-    }
-}
-
 .add-to-cart-btn:hover {
     background-color: #c93d1f; /* Cor um pouco mais escura ao passar o mouse */
     transform: translateY(-2px);
@@ -489,3 +460,38 @@ footer.footer-visible {
 }
 
 footer.footer-hidden * { outline: none; }
+/* toast de notificação */
+.toast-container {
+    position: fixed;
+    right: 1rem;
+    bottom: 6.4rem; /* acima do footer */
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+.toast {
+    pointer-events: auto;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    font-weight: 600;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform 220ms ease, opacity 220ms ease;
+    max-width: 320px;
+}
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.toast.success {
+    background: linear-gradient(90deg,#27ae60,#2ecc71);
+    color: #07211a;
+}
+@media (max-width:480px){
+    .toast-container { right: .6rem; left: .6rem; bottom: 16vh; }
+}

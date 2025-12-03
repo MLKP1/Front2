@@ -193,6 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
+            // Verifica se o usuário está logado
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Você precisa estar logado para fazer um pedido. Faça login agora.');
+                window.location.href = 'pages/login/entrar.html';
+                return;
+            }
             openModal();
         });
     }
@@ -210,6 +217,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.target === modal) {
                 closeModal();
             }
+        });
+    }
+
+    // Botão que confirma o pagamento: limpa o carrinho e fecha o modal
+    const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
+    if (confirmPaymentBtn) {
+        confirmPaymentBtn.addEventListener('click', () => {
+            // Limpa o carrinho (usa função já existente) e fecha modal
+            clearCart();
+            closeModal();
+            // feedback ao usuário (pode ser substituído por toast/modal)
+            alert('Pagamento concluído. O carrinho foi esvaziado.');
         });
     }
 });

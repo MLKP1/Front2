@@ -67,31 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         pizzasDoces.innerHTML = '';
         // console.log(pizzas);
 
-        // Separa as pizzas entre salgadas e doces (quando possível)
-        // helper disponível para uso em várias partes do fluxo
-function isSweetPizza(pizza) {
-    try {
-        const name = (pizza.name || '').toLowerCase();
-        const category = (pizza.category || pizza.type || '').toLowerCase();
-        if (pizza.isSweet === true || pizza.sweet === true) return true;
-        if (category && (category.includes('doce') || category.includes('sweet') || category.includes('dessert'))) return true;
-        const sweetKeywords = ['doce', 'sobremesa', 'chocolate', 'nutella', 'brigadeiro', 'morango', 'banana', 'goiabada', 'creme de avelã', 'sorvete'];
-        for (const keyword of sweetKeywords) {
-            if (name.includes(keyword)) return true;
-        }
-        if (Array.isArray(pizza.tags) && pizza.tags.join(',').toLowerCase().includes('doce')) return true;
-    } catch (err) {
-    }
-    return false;
-}
-
-        // Antes de renderizar, ordene as pizzas para garantir que as salgadas venham primeiro
-        pizzas.sort((a, b) => {
-            const aSweet = isSweetPizza(a) ? 1 : 0;
-            const bSweet = isSweetPizza(b) ? 1 : 0;
-            return aSweet - bSweet; // salgadas (0) antes das doces (1)
-        });
-
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div');
             pizzaElement.classList.add('menu-item');
@@ -113,7 +88,7 @@ function isSweetPizza(pizza) {
                     </div>
                 </div>
             `;
-            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
+            const target = pizza.type === 'SALTY' ? pizzasSalgadas : pizzasDoces;
             target.appendChild(pizzaElement);
         });
     } catch (error) {
@@ -141,11 +116,7 @@ function isSweetPizza(pizza) {
         pizzasSalgadas.innerHTML = ''
         pizzasDoces.innerHTML = ''
         // Garantir que as salgadas fiquem antes das doces também após concatenar todas as páginas
-        pizzas.sort((a, b) => {
-            const aSweet = isSweetPizza(a) ? 1 : 0;
-            const bSweet = isSweetPizza(b) ? 1 : 0;
-            return aSweet - bSweet;
-        });
+
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div')
             pizzaElement.classList.add('menu-item')
@@ -166,7 +137,7 @@ function isSweetPizza(pizza) {
                     </div>
                 </div>
             `;
-            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
+            const target = pizza.type === 'SALTY' ? pizzasSalgadas : pizzasDoces
             target.appendChild(pizzaElement)
         })
     }
@@ -265,44 +236,103 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.category-nav .nav-cat');
     const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-    // Add click smooth scroll and set active class
+    function updateActiveLink() {
+        let current = null;
+        let maxVisibility = 0;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            // Se a seção está totalmente acima ou abaixo da viewport, pula
+            if (rect.bottom < 0 || rect.top > viewHeight) {
+                return;
+            }
+
+            // Calcula quanto da seção está visível
+            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0);
+            const sectionHeight = rect.height;
+            const visibility = visibleHeight / sectionHeight;
+
+            // Prioriza a seção que está mais no topo da viewport
+            if (visibility > maxVisibility || (visibility === maxVisibility && (current === null || rect.top < current.getBoundingClientRect().top))) {
+                maxVisibility = visibility;
+                current = section;
+            }
+        });
+
+        // Remove active de todos
+        navLinks.forEach(l => l.classList.remove('active'));
+        
+        // Adiciona active apenas ao link correspondente da seção mais visível
+        if (current && current.id) {
+            const activeLink = Array.from(navLinks).find(l => l.getAttribute('href') === `#${current.id}`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+
+    // Add click smooth scroll
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const id = link.getAttribute('href');
             const target = document.querySelector(id);
             if (target) {
+                link.blur(); // Remove o foco do link
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // update active
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
             }
         });
     });
 
-    // IntersectionObserver to detect section on screen and set active link
-    if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    const id = `#${entry.target.id}`;
-                    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-                }
-            });
-        }, { root: null, threshold: [0.5] });
+    // Atualizar link ativo durante scroll
+    window.addEventListener('scroll', () => {
+        updateActiveLink();
+    }, { passive: true });
 
-        sections.forEach(s => obs.observe(s));
-    } else {
-        // fallback: on scroll, calculate nearest
-        window.addEventListener('scroll', () => {
-            let current = sections[0];
-            sections.forEach(s => {
-                const rect = s.getBoundingClientRect();
-                if (rect.top <= window.innerHeight/3 && rect.bottom >= window.innerHeight/4) current = s;
-            });
-            if (current && current.id) {
-                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${current.id}`));
-            }
-        });
-    }
+    // Atualiza na carga inicial
+    updateActiveLink();
 });
+
+(function(){
+    function ensureToastContainer(){
+        let c = document.querySelector('.toast-container');
+        if (!c) {
+            c = document.createElement('div');
+            c.className = 'toast-container';
+            document.body.appendChild(c);
+        }
+        return c;
+    }
+
+    function showToast(message, type = 'success', timeout = 2500){
+        const container = ensureToastContainer();
+        const t = document.createElement('div');
+        t.className = `toast ${type}`;
+        t.setAttribute('role','status');
+        t.setAttribute('aria-live','polite');
+        t.textContent = message;
+        container.appendChild(t);
+        // force reflow para animar
+        requestAnimationFrame(()=> t.classList.add('show'));
+        // remover depois
+        setTimeout(()=> {
+            t.classList.remove('show');
+            t.addEventListener('transitionend', ()=> t.remove(), { once: true });
+        }, timeout);
+    }
+
+    // Se seu código já adiciona ao carrinho, chame showToast() dentro dessa função.
+    // Caso não, esta captura global de clique funciona para botões com essa classe:
+    document.addEventListener('click', function(e){
+        const btn = e.target.closest('.add-to-cart-btn');
+        if (!btn) return;
+        // Opcional: ler nome da pizza/prévia no card
+        const item = btn.closest('.menu-item');
+        const title = item ? (item.querySelector('h3')?.textContent || 'Item') : 'Item';
+        showToast(`${title} adicionada ao carrinho`);
+        // Se necessário, espere e permita que seu código continue a adicionar ao carrinho aqui.
+    }, false);
+
+})();
