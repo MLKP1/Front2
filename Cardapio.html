@@ -17,8 +17,8 @@
             <ul>
                 <li><a href="index.html" >Home</a></li>
                 <li><a href="Cardapio.html" style="font-weight: bold;">Cardápio</a></li>
-                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
-                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li id="btn-login"><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li id="btn-cadastro"><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
                 <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
             </ul>
@@ -76,6 +76,14 @@
     <script src="js/cardapio.js"></script>
     <script src="js/footer.js"></script>
     <script>
+        const logged = localStorage.getItem('token')
+        if (logged) {
+            const loginBtn = document.querySelector('#btn-login')
+            const cadastroBtn = document.querySelector('#btn-cadastro')
+            loginBtn.remove()
+            cadastroBtn.remove()
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const btn = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav');
