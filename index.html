@@ -18,8 +18,8 @@
             <ul>
                 <li><a href="index.html" style="font-weight: bold;">Home</a></li>
                 <li><a href="Cardapio.html">Cardápio</a></li>
-                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
-                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li id="btn-login"><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li id="btn-cadastro"><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
                 <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
             </ul>
@@ -125,6 +125,14 @@
     </footer>
 
     <script>
+        const logged = localStorage.getItem('token')
+        if (logged) {
+            const loginBtn = document.querySelector('#btn-login')
+            const cadastroBtn = document.querySelector('#btn-cadastro')
+            loginBtn.remove()
+            cadastroBtn.remove()
+        }
+
         // header scroll effect + mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.getElementById('header');

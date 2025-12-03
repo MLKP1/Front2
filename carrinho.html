@@ -16,8 +16,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Cardapio.html">Cardápio</a></li>
-                <li><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
-                <li><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
+                <li id="btn-login"><a href="pages/login/entrar.html" class="nav-btn login-btn">Logar</a></li>
+                <li id="btn-cadastro"><a href="pages/usuarios/cadastro.html" class="nav-btn cadastro-btn">Cadastro</a></li>
                 <li><a href="carrinho.html" style="font-weight: bold;">Carrinho</a></li>
                 <li><a href="pages/usuarios/Perfil.html">Perfil</a></li>
             </ul>
@@ -55,7 +55,8 @@
             <div class="footer-section">
                 <h4>Contato</h4>
                 <p>📞 (11) 1234-5678</p>
-                <p>✉️ <a href="mailto:contato@pizzastars.shop">contato@pizzastars.shop</a></p>
+                <p>✉️ contato@pizzastars.shop</p>
+                <p>📍 Rua das Pizzas, 123 - Centro</p>
             </div>
             <div class="footer-section">
                 <h4>Horário de Funcionamento</h4>
@@ -71,5 +72,14 @@
 
     <script src="js/carrinho.js"></script>
     <script src="js/footer.js"></script>
+    <script>
+        const logged = localStorage.getItem('token')
+        if (logged) {
+            const loginBtn = document.querySelector('#btn-login')
+            const cadastroBtn = document.querySelector('#btn-cadastro')
+            loginBtn.remove()
+            cadastroBtn.remove()
+        }
+    </script>
 </body>
 </html>
