@@ -67,30 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         pizzasDoces.innerHTML = '';
         // console.log(pizzas);
 
-        // Separa as pizzas entre salgadas e doces (quando possível)
-        // helper disponível para uso em várias partes do fluxo
-function isSweetPizza(pizza) {
-    try {
-        const name = (pizza.name || '').toLowerCase();
-        const category = (pizza.category || pizza.type || '').toLowerCase();
-        if (pizza.isSweet === true || pizza.sweet === true) return true;
-        if (category && (category.includes('doce') || category.includes('sweet') || category.includes('dessert'))) return true;
-        const sweetKeywords = ['doce', 'sobremesa', 'chocolate', 'nutella', 'brigadeiro', 'morango', 'banana', 'goiabada', 'creme de avelã', 'sorvete'];
-        for (const keyword of sweetKeywords) {
-            if (name.includes(keyword)) return true;
-        }
-        if (Array.isArray(pizza.tags) && pizza.tags.join(',').toLowerCase().includes('doce')) return true;
-    } catch (err) {
-    }
-    return false;
-}
 
-        // Antes de renderizar, ordene as pizzas para garantir que as salgadas venham primeiro
-        pizzas.sort((a, b) => {
-            const aSweet = isSweetPizza(a) ? 1 : 0;
-            const bSweet = isSweetPizza(b) ? 1 : 0;
-            return aSweet - bSweet; // salgadas (0) antes das doces (1)
-        });
 
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div');
@@ -113,7 +90,6 @@ function isSweetPizza(pizza) {
                     </div>
                 </div>
             `;
-            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
             target.appendChild(pizzaElement);
         });
     } catch (error) {
@@ -141,11 +117,7 @@ function isSweetPizza(pizza) {
         pizzasSalgadas.innerHTML = ''
         pizzasDoces.innerHTML = ''
         // Garantir que as salgadas fiquem antes das doces também após concatenar todas as páginas
-        pizzas.sort((a, b) => {
-            const aSweet = isSweetPizza(a) ? 1 : 0;
-            const bSweet = isSweetPizza(b) ? 1 : 0;
-            return aSweet - bSweet;
-        });
+
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div')
             pizzaElement.classList.add('menu-item')
@@ -166,7 +138,6 @@ function isSweetPizza(pizza) {
                     </div>
                 </div>
             `;
-            const target = isSweetPizza(pizza) ? pizzasDoces : pizzasSalgadas;
             target.appendChild(pizzaElement)
         })
     }
