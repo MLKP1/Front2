@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="../../../css/usuario/Perfil.css">
+    <link rel="stylesheet" href="../../css/usuario/Perfil.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
@@ -16,32 +16,33 @@
             <span class="profile-text">Perfil</span>
         </header>
         <section class="profile-info">
-            <h1 class="profile-name">Neymar Junior</h1>
+            <h1 class="profile-name">Carregando...</h1>
+            <p class="profile-email">Carregando...</p>
         </section>
 
         <nav class="menu">
+            <!-- TODO: remover o info pessoal e adicionar link/botão para alterar senha/email/nome -->
             <a href="../usuarios/info_pessoal.html" class="menu-item">
                 <span class="material-symbols-outlined icon">person</span>
                 <span>Informações Pessoais</span>
                 <span class="material-symbols-outlined arrow">arrow_forward_ios</span>
             </a>
-            <a href="../endereco/endereços.html" class="menu-item">
-                <span class="material-symbols-outlined icon">home</span>
-                <span>Endereço</span>
-                <span class="material-symbols-outlined arrow">arrow_forward_ios</span>
-            </a>
-            <a href="../../../carrinho.html" class="menu-item">
-                <span class="material-symbols-outlined icon">shopping_cart</span>
-                <span>Carrinho</span>
-                <span class="material-symbols-outlined arrow">arrow_forward_ios</span>
-            </a>
-            <a href="logout.html" class="menu-item last-item">
+            <a href="../../" class="menu-item" id="btn-sair" onclick="sair()">
                 <span class="material-symbols-outlined icon">logout</span>
                 <span>Sair</span>
                 <span class="material-symbols-outlined arrow">arrow_forward_ios</span>
             </a>
-        </nav>   
+            <a href="#" class="menu-item last-item" id="btn-delete" onclick="deletarConta()">
+                <span class="material-symbols-outlined icon">delete</span>
+                <span>Deletar Conta</span>
+                <span class="material-symbols-outlined arrow">arrow_forward_ios</span>
+            </a>
+        </nav>
     </div> 
-  </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../../js/perfil/sair.js"></script>
+    <script src="../../js/perfil/deletar_conta.js"></script>
+    <script src="../../js/perfil/buscar_conta.js"></script>
 </body>
 </html>
