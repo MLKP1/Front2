@@ -265,46 +265,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.category-nav .nav-cat');
     const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-    // Add click smooth scroll and set active class
+    function updateActiveLink() {
+        let current = null;
+        let maxVisibility = 0;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            // Se a seção está totalmente acima ou abaixo da viewport, pula
+            if (rect.bottom < 0 || rect.top > viewHeight) {
+                return;
+            }
+
+            // Calcula quanto da seção está visível
+            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0);
+            const sectionHeight = rect.height;
+            const visibility = visibleHeight / sectionHeight;
+
+            // Prioriza a seção que está mais no topo da viewport
+            if (visibility > maxVisibility || (visibility === maxVisibility && (current === null || rect.top < current.getBoundingClientRect().top))) {
+                maxVisibility = visibility;
+                current = section;
+            }
+        });
+
+        // Remove active de todos
+        navLinks.forEach(l => l.classList.remove('active'));
+        
+        // Adiciona active apenas ao link correspondente da seção mais visível
+        if (current && current.id) {
+            const activeLink = Array.from(navLinks).find(l => l.getAttribute('href') === `#${current.id}`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+
+    // Add click smooth scroll
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const id = link.getAttribute('href');
             const target = document.querySelector(id);
             if (target) {
+                link.blur(); // Remove o foco do link
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // update active
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
             }
         });
     });
 
-    // IntersectionObserver to detect section on screen and set active link
-    if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    const id = `#${entry.target.id}`;
-                    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-                }
-            });
-        }, { root: null, threshold: [0.5] });
+    // Atualizar link ativo durante scroll
+    window.addEventListener('scroll', () => {
+        updateActiveLink();
+    }, { passive: true });
 
-        sections.forEach(s => obs.observe(s));
-    } else {
-        // fallback: on scroll, calculate nearest
-        window.addEventListener('scroll', () => {
-            let current = sections[0];
-            sections.forEach(s => {
-                const rect = s.getBoundingClientRect();
-                if (rect.top <= window.innerHeight/3 && rect.bottom >= window.innerHeight/4) current = s;
-            });
-            if (current && current.id) {
-                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${current.id}`));
-            }
-        });
-    }
+    // Atualiza na carga inicial
+    updateActiveLink();
 });
 
 (function(){
