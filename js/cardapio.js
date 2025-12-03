@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         pizzasDoces.innerHTML = '';
         // console.log(pizzas);
 
-
-
         pizzas.forEach(pizza => {
             const pizzaElement = document.createElement('div');
             pizzaElement.classList.add('menu-item');
@@ -90,6 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `;
+            const target = pizza.type === 'SALTY' ? pizzasSalgadas : pizzasDoces;
             target.appendChild(pizzaElement);
         });
     } catch (error) {
@@ -138,6 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `;
+            const target = pizza.type === 'SALTY' ? pizzasSalgadas : pizzasDoces
             target.appendChild(pizzaElement)
         })
     }
