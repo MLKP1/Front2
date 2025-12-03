@@ -193,6 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
+            // Verifica se o usuário está logado
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Você precisa estar logado para fazer um pedido. Faça login agora.');
+                window.location.href = 'pages/login/entrar.html';
+                return;
+            }
             openModal();
         });
     }
